@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "text": "Veterinary appointment for the cats",
+      "day": "May 7th at 11:30 AM",
+      "reminder": true
+    },
+    {
+      "id": 2,
+      "text": "Basketball practice",
+      "day": "May 6th at 5:30 PM",
+      "reminder": true
+    },
+    {
+      "id": 3,
+      "text": "Grocery Shopping at Asian Market",
+      "day": "May 6th at 3:30 PM",
+      "reminder": false
+    },
+    {
+      "day": "every morning at 8am to 10am",
+      "reminder": true,
+      "text": "basektball skills practice",
+      "id": 4
+    }
+  ]
+}
