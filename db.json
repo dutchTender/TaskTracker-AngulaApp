@@ -16,7 +16,7 @@
       "id": 3,
       "text": "Grocery Shopping at Asian Market",
       "day": "May 6th at 3:30 PM",
-      "reminder": false
+      "reminder": true
     },
     {
       "day": "every morning at 8am to 10am",

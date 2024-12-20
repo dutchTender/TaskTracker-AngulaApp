@@ -16,6 +16,7 @@ export class TaskEditFormComponent implements OnInit {
   showTaskEditForm: boolean;
   constructor(private UIService: UiService) {
     UIService.openEditFormSubjectMultiCaster().subscribe( newValue => this.showTaskEditForm = newValue);
+    UIService.closeEditFormSubjectMultiCaster().subscribe( newValue => this.showTaskEditForm = newValue);
   }
 
   ngOnInit(): void {

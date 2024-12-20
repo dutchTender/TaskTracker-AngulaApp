@@ -1,18 +1,26 @@
 <form  class="add-form" *ngIf="showTaskEditForm">
   <div class="form-control">
     <label for="text">Task Description</label>
-    <input type="text" name="text"  (click)="checkTaskReminderValue()" id="text" placeholder="Add Task" value="{{taskText}}"/>
+    <input type="text" name="text" id="text" placeholder="Add Task"
+           (click)="checkTaskReminderValue()"
+           value="{{taskText}}"
+    />
   </div>
   <div class="form-control">
     <label for="day">Day & Time</label>
-    <input type="text" name="day"   id="day" placeholder="Add Day & Time" value="{{taskDay}}"/>
+    <input type="text" name="day"   id="day" placeholder="Add Day & Time"
+           value="{{taskDay}}"/>
   </div>
 
-  <div class="form-control form-control-check" *ngIf="taskReminder.toString() === 'true'">
+  <div class="form-control form-control-check"
+       *ngIf="taskReminder.toString() === 'true'"
+  >
     <label for="reminder-true">Task Reminder</label>
     <input   type="checkbox"   name="reminder-true" id="reminder-true" checked/>
   </div>
-  <div class="form-control form-control-check" *ngIf="taskReminder.toString() === 'false'">
+  <div class="form-control form-control-check"
+       *ngIf="taskReminder.toString() === 'false'"
+  >
     <label for="reminder-false">Task Reminder</label>
     <input   type="checkbox"   name="reminder-false" id="reminder-false" />
   </div>
