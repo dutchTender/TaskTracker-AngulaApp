@@ -10,8 +10,8 @@ export class UiService {
   private addTaskFormToggleSubject = new Subject<any>();
 
   private showEditTaskForm = false;
-  private editTaskFormOpenSubject = new Subject<any>();
-  private editTaskFormCloseSubject = new Subject<any>();
+  private editTaskFormToggleSubject = new Subject<any>();
+
   constructor() { }
   toggleAddForm(): void{
     this.showAddTaskForm = !this.showAddTaskForm;
@@ -21,21 +21,19 @@ export class UiService {
     return this.addTaskFormToggleSubject.asObservable();
   }
 
+  toggleEditFormSubjectMultiCaster(): Observable<any>{
+    return this.editTaskFormToggleSubject.asObservable();
+  }
+
   openEditForm(): void{
     this.showEditTaskForm = true;
-    this.editTaskFormOpenSubject.next(this.showEditTaskForm);
+    this.editTaskFormToggleSubject.next(this.showEditTaskForm);
   }
 
-  openEditFormSubjectMultiCaster(): Observable<any>{
-    return this.editTaskFormOpenSubject.asObservable();
-  }
   closeEditForm(): void{
     this.showEditTaskForm = false;
-    this.editTaskFormCloseSubject.next(this.showEditTaskForm);
+    this.editTaskFormToggleSubject.next(this.showEditTaskForm);
   }
 
-  closeEditFormSubjectMultiCaster(): Observable<any>{
-    return this.editTaskFormCloseSubject.asObservable();
-  }
 }
 

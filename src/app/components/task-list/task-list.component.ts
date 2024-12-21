@@ -37,7 +37,6 @@ export class TaskListComponent implements OnInit {
 
   taskAddEventCatcher(task: Task): void{
     this.tService.addTaskToService(task).subscribe((addedTask: Task) => (this.tasks.push(addedTask)));
-
   }
 
 

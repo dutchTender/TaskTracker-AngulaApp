@@ -14,12 +14,14 @@ export class HeaderComponent implements OnInit {
   toggleShowAddTaskSubscription: Subscription;
 
   showEditTaskButton = false;
-  openEditTaskSubscription: Subscription;
-  closeEditTaskSubscription: Subscription;
+  toggleShowEditTaskSubscription: Subscription;
+
   constructor(private UIservice: UiService, private appRouter: Router) {
-    this.toggleShowAddTaskSubscription = UIservice.toggleAddFormSubjectMultiCaster().subscribe((b) => this.showAddTaskButton = b );
-    this.openEditTaskSubscription = UIservice.openEditFormSubjectMultiCaster().subscribe(newValue => this.showEditTaskButton = newValue);
-    this.closeEditTaskSubscription = UIservice.closeEditFormSubjectMultiCaster().subscribe(newValue => this.showEditTaskButton = newValue);
+    // tslint:disable-next-line:max-line-length
+    this.toggleShowAddTaskSubscription = UIservice.toggleAddFormSubjectMultiCaster().subscribe((newValue) => this.showAddTaskButton = newValue );
+    // tslint:disable-next-line:max-line-length
+    this.toggleShowEditTaskSubscription = UIservice.toggleEditFormSubjectMultiCaster().subscribe(newValue => this.showEditTaskButton = newValue);
+
   }
 
   ngOnInit(): void {

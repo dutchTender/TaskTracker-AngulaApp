@@ -1,7 +1,6 @@
 <div class="task"
      [ngClass]="{reminder: task.reminder}"
-     (dblclick)="toggleReminder4Task()"
-     (click)="openUpdateTaskForm()"
+     (dblclick)="openUpdateTaskForm()"
 >
   <h3>
     {{task.text}}
