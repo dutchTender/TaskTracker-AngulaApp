@@ -38,6 +38,8 @@ export class TaskListComponent implements OnInit {
   taskAddEventCatcher(task: Task): void{
     this.tService.addTaskToService(task).subscribe((addedTask: Task) => (this.tasks.push(addedTask)));
   }
-
+  taskUpdateEventCatcher(task: Task): void{
+    this.tService.updateTaskToService(task).subscribe((addedTask: Task) => (alert('updated db for task ' + addedTask.text + ' still need to update front end')));
+  }
 
 }

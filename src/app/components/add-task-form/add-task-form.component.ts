@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Task} from '../../Task';
+import {Task} from '../../Task';
 import {UiService} from '../../services/ui.service';
 import {Subscription} from 'rxjs';
 
@@ -13,25 +13,28 @@ import {Subscription} from 'rxjs';
 export class AddTaskFormComponent implements OnInit {
   newTask: Task = {
     day: '', reminder: false, text: ''
-
   };
+  /* ---------------------------------------*/
+  /* form fields */
+  /* ---------------------------------------*/
   taskText: string;
   taskDay: string;
   taskReminderOption = false;
-  @Output() addTaskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
+  /* ---------------------------------------*/
+  @Output() addTaskEmitter$: EventEmitter<Task> = new EventEmitter<Task>();
   showAddTask: boolean;
   toggleShowAddTaskSubscription: Subscription;
   constructor(private UIservice: UiService) {
     this.toggleShowAddTaskSubscription = UIservice.toggleAddFormSubjectMultiCaster().subscribe((newValue) => this.showAddTask = newValue );
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { /* hook for component have completed loading*/
   }
   createNewTask(): void {
     this.newTask.text = this.taskText;
     this.newTask.day = this.taskDay;
     this.newTask.reminder = this.taskReminderOption;
-    this.addTaskEmitter.emit(this.newTask);
+    this.addTaskEmitter$.emit(this.newTask);
     this.taskText = '';
     this.taskDay = '';
     this.taskReminderOption = false;

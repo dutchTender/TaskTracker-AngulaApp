@@ -13,7 +13,6 @@ export class TaskItemComponent implements OnInit {
 
   @Input() task: Task;
   @Output() deleteTaskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
-  @Output() updateReminderEmitter: EventEmitter<Task> = new EventEmitter<Task>();
   @Output() openEditTaskFormEmitter: EventEmitter<Task> = new EventEmitter<Task>();
   timeIcon = faTimes;
 
@@ -23,9 +22,7 @@ export class TaskItemComponent implements OnInit {
   onDelete(): void{
     this.deleteTaskEmitter.emit(this.task);
   }
-  toggleReminder4Task(): void{
-    this.updateReminderEmitter.emit(this.task);
-  }
+
   openUpdateTaskForm(): void{ // we need to cast an even to tasks list. similar to how add button casted and event to tasks list
     this.openEditTaskFormEmitter.emit(this.task);
   }

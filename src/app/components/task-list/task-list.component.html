@@ -1,13 +1,13 @@
 <app-add-task-form
-  (addTaskEmitter)="taskAddEventCatcher($event)"
->
+  (addTaskEmitter$)="taskAddEventCatcher($event)">
 </app-add-task-form>
 
 <app-edit-task-form
   taskText="{{focusedTask.text}}"
   taskDay="{{focusedTask.day}}"
   taskReminder="{{focusedTask.reminder}}"
->
+  taskID="{{focusedTask.id}}"
+  (editTaskEmitter$)="taskUpdateEventCatcher($event)">
 </app-edit-task-form>
 
 <app-task-item
@@ -15,8 +15,7 @@
   [task]="task"
   (deleteTaskEmitter)="taskDeleteEventCatcher(task)"
   (updateReminderEmitter)="taskUpdateReminderEventCatcher(task)"
-  (openEditTaskFormEmitter)="taskUpdateFormOpenEventCatcher(task)"
->
+  (openEditTaskFormEmitter)="taskUpdateFormOpenEventCatcher(task)">
 </app-task-item>
 
 
