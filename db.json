@@ -1,8 +1,8 @@
 {
   "tasks": [
     {
-      "day": "May 5th at 12:30 PM",
-      "reminder": "true",
+      "day": "May 5th at 12:30 AM",
+      "reminder": true,
       "text": "Veterinary appointment for the cats",
       "id": 1
     },

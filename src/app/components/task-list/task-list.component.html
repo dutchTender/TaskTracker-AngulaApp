@@ -14,7 +14,6 @@
   *ngFor="let task of tasks"
   [task]="task"
   (deleteTaskEmitter)="taskDeleteEventCatcher(task)"
-  (updateReminderEmitter)="taskUpdateReminderEventCatcher(task)"
   (openEditTaskFormEmitter)="taskUpdateFormOpenEventCatcher(task)">
 </app-task-item>
 
