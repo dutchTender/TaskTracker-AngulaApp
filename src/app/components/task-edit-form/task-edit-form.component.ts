@@ -9,31 +9,33 @@ import {UiService} from '../../services/ui.service';
   styleUrls: ['./task-edit-form.component.css']
 })
 export class TaskEditFormComponent implements OnInit {
-
+  updatedTask: Task = {
+    day: '', reminder: null, text: ''
+  };
   /* ---------------------------------------*/
   /* form fields */
   /* ---------------------------------------*/
   @Input() taskText: string;
   @Input() taskDay: string;
-  @Input() taskReminder: boolean;
+  @Input() taskReminder: string;
   @Input() taskID: number;
+
   /* ---------------------------------------*/
   showTaskEditForm: boolean;
-  @Output() editTaskEmitter$: EventEmitter<Task> = new EventEmitter<Task>();
+  @Output() editTaskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
   constructor(private UIService: UiService) {
     UIService.toggleEditFormSubjectMultiCaster().subscribe(newValue => this.showTaskEditForm = newValue);
   }
-  updatedTask: Task = {
-    day: '', reminder: false, text: ''
-  };
+
   ngOnInit(): void {
+
   }
   updateTask(): void{
+     alert('current value of task reminder string : ' + this.taskReminder);
      this.updatedTask.text = this.taskText;
      this.updatedTask.day = this.taskDay;
-     this.updatedTask.reminder = this.taskReminder;
      this.updatedTask.id = this.taskID;
-     this.editTaskEmitter$.emit(this.updatedTask);
+     this.editTaskEmitter.emit(this.updatedTask);
      this.updatedTask.text = '';
      this.updatedTask.day = '';
      this.updatedTask.reminder = false;

@@ -1,5 +1,5 @@
 <app-add-task-form
-  (addTaskEmitter$)="taskAddEventCatcher($event)">
+  (addTaskEmitter)="taskAddEventCatcher($event)">
 </app-add-task-form>
 
 <app-edit-task-form
@@ -7,14 +7,14 @@
   taskDay="{{focusedTask.day}}"
   taskReminder="{{focusedTask.reminder}}"
   taskID="{{focusedTask.id}}"
-  (editTaskEmitter$)="taskUpdateEventCatcher($event)">
+  (editTaskEmitter)="taskUpdateEventCatcher($event)">
 </app-edit-task-form>
 
 <app-task-item
-  *ngFor="let task of tasks"
-  [task]="task"
-  (deleteTaskEmitter)="taskDeleteEventCatcher(task)"
-  (openEditTaskFormEmitter)="taskUpdateFormOpenEventCatcher(task)">
+  *ngFor="let taskItem of tasks"
+  [task]="taskItem"
+  (deleteTaskEmitter)="taskDeleteEventCatcher(taskItem)"
+  (openEditTaskFormEmitter)="taskUpdateFormOpenEventCatcher($event)">
 </app-task-item>
 
 

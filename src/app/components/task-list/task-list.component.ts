@@ -1,24 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Task} from '../../Task';
 import {TaskService} from '../../services/task.service';
 import {UiService} from '../../services/ui.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit, OnDestroy{
 
   tasks: Task[] = [];
   focusedTask: Task = {
-    day: '', reminder: false, text: ''
+    day: '', reminder: null, text: ''
   };
+  loadTasksFromService: Subscription;
   constructor(private tService: TaskService, private UIService: UiService) { }
 
   ngOnInit(): void {
     /* call get tasks service, then update component rendering via updating component property this.tasks*/
-    this.tService.getTasksFromService().subscribe((returnedTasks) => this.tasks = returnedTasks );
+    this.loadTasksFromService = this.tService.getTasksFromService().subscribe((returnedTasks) => this.tasks = returnedTasks );
+  }
+  ngOnDestroy(): void{
+    this.loadTasksFromService.unsubscribe();
   }
   taskDeleteEventCatcher(task: Task): void{
     /* call delete service, then update component rendering via updating component property this.tasks */
@@ -33,7 +38,7 @@ export class TaskListComponent implements OnInit {
   }
   taskUpdateEventCatcher(task: Task): void{
     this.tService.updateTaskToService(task).subscribe((addedTask: Task) => (
-      this.tService.getTasksFromService().subscribe((returnedTasks) => this.tasks = returnedTasks )
+      this.loadTasksFromService = this.tService.getTasksFromService().subscribe((returnedTasks) => this.tasks = returnedTasks )
     ));
   }
 

@@ -1,7 +1,7 @@
+
 <div class="task"
-     [ngClass]="{reminder: task.reminder}"
-     (dblclick)="openUpdateTaskForm()"
->
+     [ngClass]="{'reminder': task.reminder === true}"
+     (dblclick)="openUpdateTaskForm()">
   <h3>
     {{task.text}}
     <fa-icon

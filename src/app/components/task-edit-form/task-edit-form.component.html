@@ -1,28 +1,22 @@
 <form  class="add-form" *ngIf="showTaskEditForm" (ngSubmit)="updateTask()">
+
   <div class="form-control">
     <label for="text">Task Description</label>
-    <input type="text" name="text" id="text" placeholder="Add Task"
+    <input type="text" name="text" id="text" placeholder="Update Task text"
            [(ngModel)]="taskText"
            value="{{taskText}}"/>
   </div>
   <div class="form-control">
     <label for="day">Day & Time</label>
-    <input type="text" name="day"   id="day" placeholder="Add Day & Time"
+    <input type="text" name="day"   id="day" placeholder="Update Day & Time"
            value="{{taskDay}}"
            [(ngModel)]="taskDay"/>
   </div>
-
-  <div class="form-control form-control-check"
-       *ngIf="taskReminder.toString() === 'true'">
-    <label for="reminder-true">Task Reminder</label>
-    <input   type="checkbox"   name="reminder-true" id="reminder-true" checked
-             [(ngModel)]="taskReminder"/>
-  </div>
-  <div class="form-control form-control-check"
-       *ngIf="taskReminder.toString() === 'false'">
-    <label for="reminder-false">Task Reminder</label>
-    <input   type="checkbox"   name="reminder-false" id="reminder-false"
-      [(ngModel)]="taskReminder"/>
+  <div class="form-control form-control-check">
+    <label for="reminder">Task Reminder</label>
+    <input type="checkbox" name="reminder" id="reminder"
+           [checked]="taskReminder === 'true'"
+           [(ngModel)]="updatedTask.reminder"/>
   </div>
   <input class="btn btn-block" type="submit" value="Update Task" >
 </form>

@@ -21,11 +21,13 @@ export class TaskService {
   }
 
   updateTaskToService( task: Task): Observable<Task>{
+    alert(JSON.stringify(task));
     const url: string = this.apiUrl + '/' + task.id;
     return this.http.put<Task>(url, task, httpOptions);
   }
 
   addTaskToService( task: Task): Observable<Task>{
+    alert(JSON.stringify(task));
     const url: string = this.apiUrl;
     return this.http.post<Task>(url, task, httpOptions);
   }
