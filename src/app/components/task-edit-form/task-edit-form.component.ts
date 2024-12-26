@@ -31,7 +31,6 @@ export class TaskEditFormComponent implements OnInit {
 
   }
   updateTask(): void{
-     alert('current value of task reminder string : ' + this.taskReminder);
      this.updatedTask.text = this.taskText;
      this.updatedTask.day = this.taskDay;
      this.updatedTask.id = this.taskID;

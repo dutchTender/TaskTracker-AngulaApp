@@ -2,7 +2,7 @@
   "tasks": [
     {
       "day": "May 6th at 3:30 PM",
-      "reminder": true,
+      "reminder": false,
       "text": "Grocery Shopping at Asian Market",
       "id": 3
     },
@@ -20,7 +20,7 @@
     },
     {
       "day": "agfst",
-      "reminder": true,
+      "reminder": false,
       "text": "new task test 22",
       "id": 6
     }
