@@ -2,7 +2,7 @@
   "tasks": [
     {
       "day": "May 6th at 3:30 PM",
-      "reminder": false,
+      "reminder": true,
       "text": "Grocery Shopping at Asian Market",
       "id": 3
     },
