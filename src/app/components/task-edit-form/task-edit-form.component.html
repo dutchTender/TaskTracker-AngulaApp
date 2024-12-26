@@ -4,18 +4,18 @@
     <label for="text">Task Description</label>
     <input type="text" name="text" id="text" placeholder="Update Task text"
            [(ngModel)]="taskText"
-           value="{{taskText}}"/>
+           value="{{updatedTask.text}}"/>
   </div>
   <div class="form-control">
     <label for="day">Day & Time</label>
     <input type="text" name="day"   id="day" placeholder="Update Day & Time"
-           value="{{taskDay}}"
-           [(ngModel)]="taskDay"/>
+           value="{{updatedTask.day}}"
+           [(ngModel)]="updatedTask.day"/>
   </div>
   <div class="form-control form-control-check">
     <label for="reminder">Task Reminder</label>
     <input type="checkbox" name="reminder" id="reminder"
-           [checked]="taskReminder === 'true'"
+           [checked]="updatedTask.reminder.toString() === 'true'"
            [(ngModel)]="updatedTask.reminder"/>
   </div>
   <input class="btn btn-block" type="submit" value="Update Task" >

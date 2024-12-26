@@ -3,10 +3,7 @@
 </app-add-task-form>
 
 <app-edit-task-form
-  taskText="{{focusedTask.text}}"
-  taskDay="{{focusedTask.day}}"
-  taskReminder="{{focusedTask.reminder}}"
-  taskID="{{focusedTask.id}}"
+  [updatedTask]="focusedTask"
   (editTaskEmitter)="taskUpdateEventCatcher($event)">
 </app-edit-task-form>
 

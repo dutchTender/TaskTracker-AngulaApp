@@ -9,16 +9,8 @@ import {UiService} from '../../services/ui.service';
   styleUrls: ['./task-edit-form.component.css']
 })
 export class TaskEditFormComponent implements OnInit {
-  updatedTask: Task = {
-    day: '', reminder: null, text: ''
-  };
-  /* ---------------------------------------*/
-  /* form fields */
-  /* ---------------------------------------*/
-  @Input() taskText: string;
-  @Input() taskDay: string;
-  @Input() taskReminder: string;
-  @Input() taskID: number;
+  @Input() updatedTask: Task;
+
 
   /* ---------------------------------------*/
   showTaskEditForm: boolean;
@@ -31,14 +23,7 @@ export class TaskEditFormComponent implements OnInit {
 
   }
   updateTask(): void{
-     this.updatedTask.text = this.taskText;
-     this.updatedTask.day = this.taskDay;
-     this.updatedTask.id = this.taskID;
      this.editTaskEmitter.emit(this.updatedTask);
-     this.updatedTask.text = '';
-     this.updatedTask.day = '';
-     this.updatedTask.reminder = false;
-     this.updatedTask.id = 0;
   }
 
 }
