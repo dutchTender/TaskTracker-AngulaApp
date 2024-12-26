@@ -20,7 +20,7 @@
     },
     {
       "day": "agfst",
-      "reminder": true,
+      "reminder": false,
       "text": "new task test 22",
       "id": 6
     }

@@ -11,8 +11,10 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./add-task-form.component.css']
 })
 export class AddTaskFormComponent implements OnInit, OnDestroy {
+  showAddTask: boolean;
+  toggleShowAddTaskSubscription: Subscription;
   newTask: Task = {
-    day: '', reminder: null, text: ''
+    day: '', reminder: false, text: ''
   };
   /* ---------------------------------------*/
   /* form fields */
@@ -22,8 +24,6 @@ export class AddTaskFormComponent implements OnInit, OnDestroy {
   taskReminderOption: boolean;
   /* ---------------------------------------*/
   @Output() addTaskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
-  showAddTask: boolean;
-  toggleShowAddTaskSubscription: Subscription;
   constructor(private UIservice: UiService) {
   }
   ngOnInit(): void { /* hook for component have completed loading*/
