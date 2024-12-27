@@ -1,18 +1,16 @@
 <header>
   <h2>{{title}}</h2>
   <app-button
-    *ngIf="hasRoute('/') && !showEditTaskButton"
+    *ngIf="hasRoute('/tasks') && !showEditTaskButton"
     buttonColor="{{showAddTaskButton ? 'Red': 'Green'}}"
     buttonText="{{showAddTaskButton ? 'Close New Task': 'New Task'}}"
-    (btnClickedEmitter)="toggleAddBtnEventCatcher()"
-  >
+    (btnClickedEmitter)="toggleAddBtnEventCatcher()">
   </app-button>
 
   <app-button
-    *ngIf="hasRoute('/') && showEditTaskButton"
+    *ngIf="hasRoute('/tasks') && showEditTaskButton"
     buttonColor="red"
     buttonText="Close Edit Task"
-    (btnClickedEmitter)="toggleEditBtnEventCatcher()"
-  >
+    (btnClickedEmitter)="toggleEditBtnEventCatcher()">
   </app-button>
 </header>

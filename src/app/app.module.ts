@@ -19,12 +19,15 @@ import { TaskEditFormComponent } from './components/task-edit-form/task-edit-for
 
 const appRoutes: Routes = [
   {
-    path: '', component: TaskListComponent
+    path: 'tasks', component: TaskListComponent
+  },
+  {
+    path: '', redirectTo: 'tasks', pathMatch: 'full'
   },
   {
     path: 'about', component: AboutPageComponent
   }
-]
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +45,7 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes,{enableTracing: true})
+    RouterModule.forRoot(appRoutes, {enableTracing: true})
   ],
   providers: [],
   bootstrap: [AppComponent]
