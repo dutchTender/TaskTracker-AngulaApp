@@ -22,7 +22,6 @@ export class TaskEditFormComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void{
     this.showTaskSubscription.unsubscribe();
   }
-
   updateTask(): void{
      this.editTaskEmitter.emit(this.updatedTask);
   }

@@ -30,7 +30,10 @@ export class TaskListComponent implements OnInit, OnDestroy{
     this.tService.removeTaskFromService(task).subscribe((deletedTask) => (this.tasks = this.tasks.filter( (t: Task) => t.id !== task.id)) );
   }
   taskUpdateFormOpenEventCatcher(task: Task): void{
-    this.focusedTask = task;
+    this.focusedTask.day = task.day;
+    this.focusedTask.text = task.text;
+    this.focusedTask.reminder = task.reminder;
+    this.focusedTask.id = task.id;
     this.UIService.openEditForm();
   }
   taskAddEventCatcher(task: Task): void{
