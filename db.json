@@ -13,14 +13,14 @@
       "id": 4
     },
     {
-      "day": "every day after school ",
+      "day": "every day after school aegws",
       "reminder": true,
       "text": "basketball practice at community center",
       "id": 5
     },
     {
       "day": "agfst",
-      "reminder": true,
+      "reminder": false,
       "text": "new task test 22",
       "id": 6
     }

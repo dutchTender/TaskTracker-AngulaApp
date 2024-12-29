@@ -7,11 +7,15 @@
   (editTaskEmitter)="taskUpdateEventCatcher($event)">
 </app-edit-task-form>
 
-<app-task-item
-  *ngFor="let taskItem of tasks"
-  [task]="taskItem"
-  (deleteTaskEmitter)="taskDeleteEventCatcher(taskItem)"
-  (openEditTaskFormEmitter)="taskUpdateFormOpenEventCatcher($event)">
-</app-task-item>
+
+<div *ngIf="tasks$ | async as tasks">
+  <app-task-item
+    *ngFor="let taskItem of tasks"
+    [task]="taskItem"
+    (deleteTaskEmitter)="taskDeleteEventCatcher(taskItem)"
+    (openEditTaskFormEmitter)="taskUpdateFormOpenEventCatcher($event)">
+  </app-task-item>
+</div>
+
 
 

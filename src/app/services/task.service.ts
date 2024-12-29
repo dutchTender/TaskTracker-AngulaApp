@@ -10,9 +10,10 @@ const httpOptions = {
 })
 export class TaskService {
   private apiUrl = 'http://localhost:5500/tasks';
+  tasksData$ = this.getTasksFromService();
 
   constructor( private http: HttpClient) { }
-  getTasksFromService(): Observable<Task[]>{
+  private getTasksFromService(): Observable<Task[]>{
     return this.http.get<Task[]>(this.apiUrl);
   }
   removeTaskFromService( task: Task): Observable<Task>{
@@ -22,7 +23,9 @@ export class TaskService {
 
   updateTaskToService( task: Task): Observable<Task>{
     const url: string = this.apiUrl + '/' + task.id;
-    return this.http.put<Task>(url, task, httpOptions);
+    const returnValue =  this.http.put<Task>(url, task, httpOptions);
+    this.tasksData$ = this.getTasksFromService();
+    return returnValue;
   }
 
   addTaskToService( task: Task): Observable<Task>{
