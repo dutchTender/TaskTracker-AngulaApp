@@ -26,7 +26,7 @@
     },
     {
       "day": "next friday ",
-      "reminder": true,
+      "reminder": false,
       "text": "on site interview with SEC",
       "id": 7
     }

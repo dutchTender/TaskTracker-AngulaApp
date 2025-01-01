@@ -11,7 +11,7 @@ export class UiService {
 
   private showEditTaskForm = false;
   private editTaskFormToggleSubject = new Subject<any>();
-
+  editTaskFormToggle$ = this.toggleEditFormSubjectMultiCaster();
   constructor() { }
   toggleAddForm(): void{
     this.showAddTaskForm = !this.showAddTaskForm;

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import {Task} from '../../Task';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {UiService} from '../../services/ui.service';
 
 
@@ -10,17 +10,15 @@ import {UiService} from '../../services/ui.service';
   styleUrls: ['./task-edit-form.component.css']
 })
 export class TaskEditFormComponent implements OnInit, OnDestroy {
-  showTaskEditForm: boolean;
-  showTaskSubscription: Subscription;
+  showTaskEditForm$: Observable<boolean>;
   @Input() updatedTask: Task;
   @Output() editTaskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
   constructor(private UIService: UiService) {
+    this.showTaskEditForm$ = this.UIService.editTaskFormToggle$;
   }
   ngOnInit(): void {
-    this.showTaskSubscription = this.UIService.toggleEditFormSubjectMultiCaster().subscribe(newValue => this.showTaskEditForm = newValue);
   }
   ngOnDestroy(): void{
-    this.showTaskSubscription.unsubscribe();
   }
   updateTask(): void{
      this.editTaskEmitter.emit(this.updatedTask);
