@@ -11,7 +11,7 @@ import {Observable, Subscription} from 'rxjs';
   styleUrls: ['./add-task-form.component.css']
 })
 export class AddTaskFormComponent{
-  showAddTask$: Observable<boolean>;
+  showAddTaskForm$: Observable<boolean>;
   newTask: Task = {
     day: '', reminder: false, text: ''
   };
@@ -24,10 +24,8 @@ export class AddTaskFormComponent{
   /* ---------------------------------------*/
   @Output() addTaskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
   constructor(private UIservice: UiService) {
-    this.showAddTask$ = UIservice.addTaskFormToggle$;
+    this.showAddTaskForm$ = UIservice.addTaskFormToggle$;
   }
-
-
   createNewTask(): void {
     this.newTask.text = this.taskText;
     this.newTask.day = this.taskDay;

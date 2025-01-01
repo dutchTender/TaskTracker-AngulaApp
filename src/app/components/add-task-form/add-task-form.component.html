@@ -1,4 +1,4 @@
-<div *ngIf="showAddTask$ | async as showAddTask">
+<div *ngIf="showAddTaskForm$ | async as showAddTask">
   <form *ngIf="showAddTask" class="add-form" (ngSubmit)="createNewTask()">
     <div class="form-control">
       <label for="text">Task Description</label>
