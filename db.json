@@ -20,7 +20,7 @@
     },
     {
       "day": "tommorow afternoon",
-      "reminder": false,
+      "reminder": true,
       "text": "angular job interview ",
       "id": 6
     },

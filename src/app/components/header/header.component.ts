@@ -9,25 +9,12 @@ import {UIFlag} from '../../UIFlag';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent{
 
   title = 'Task Tracker';
-
   taskHeaderManager$: Observable<UIFlag>;
-  showEditTaskButton = false;
-  toggleShowEditTaskSubscription: Subscription;
-
   constructor(private UIservice: UiService, private appRouter: Router) {
     this.taskHeaderManager$ = this.UIservice.taskHeaderButton$;
-  }
-
-  ngOnInit(): void {
-    // tslint:disable-next-line:max-line-length
-    // tslint:disable-next-line:max-line-length
-    this.toggleShowEditTaskSubscription = this.UIservice.toggleEditFormSubjectMultiCaster().subscribe(newValue => this.showEditTaskButton = newValue);
-  }
-  ngOnDestroy(): void{
-    this.toggleShowEditTaskSubscription.unsubscribe();
   }
   // tslint:disable-next-line:typedef
   toggleAddBtnEventCatcher(): void {
