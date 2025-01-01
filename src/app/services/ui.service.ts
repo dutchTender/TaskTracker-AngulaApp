@@ -34,7 +34,6 @@ export class UiService {
   toggleEditFormSubjectMultiCaster(): Observable<any>{
     return this.editTaskFormToggleSubject.asObservable();
   }
-
   openEditForm(): void{
     this.tasksHeader.showAdd = false;
     this.tasksHeader.showEdit = true;
@@ -42,7 +41,6 @@ export class UiService {
     this.showEditTaskForm = true;
     this.editTaskFormToggleSubject.next(this.showEditTaskForm);
   }
-
   closeEditForm(): void{
     this.tasksHeader.showAdd = true;
     this.tasksHeader.showEdit = false;
