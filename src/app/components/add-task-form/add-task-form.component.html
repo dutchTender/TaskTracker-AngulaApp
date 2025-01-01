@@ -1,16 +1,19 @@
-<form *ngIf="showAddTask" class="add-form" (ngSubmit)="createNewTask()">
-  <div class="form-control">
-    <label for="text">Task Description</label>
-    <input type="text" name="text" [(ngModel)]="taskText"  id="text" placeholder="Add Task"/>
-  </div>
-  <div class="form-control">
-    <label for="day">Day & Time</label>
-    <input type="text" name="day" [(ngModel)]="taskDay"  id="day" placeholder="Add Day & Time"/>
-  </div>
-  <div class="form-control form-control-check">
-    <label for="reminder">Task Reminder</label>
-    <input type="checkbox" [(ngModel)]="taskReminderOption"  name="reminder" id="reminder"/>
-  </div>
-  <input class="btn btn-block" type="submit" value="Create Task">
-</form>
+<div *ngIf="showAddTask$ | async as showAddTask">
+  <form *ngIf="showAddTask" class="add-form" (ngSubmit)="createNewTask()">
+    <div class="form-control">
+      <label for="text">Task Description</label>
+      <input type="text" name="text" [(ngModel)]="taskText"  id="text" placeholder="Add Task"/>
+    </div>
+    <div class="form-control">
+      <label for="day">Day & Time</label>
+      <input type="text" name="day" [(ngModel)]="taskDay"  id="day" placeholder="Add Day & Time"/>
+    </div>
+    <div class="form-control form-control-check">
+      <label for="reminder">Task Reminder</label>
+      <input type="checkbox" [(ngModel)]="taskReminderOption"  name="reminder" id="reminder"/>
+    </div>
+    <input class="btn btn-block" type="submit" value="Create Task">
+  </form>
+</div>
+
 
