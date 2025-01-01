@@ -13,12 +13,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   title = 'Task Tracker';
 
-  toggleShowAddTaskButton$: Observable<UIFlag>;
+  taskHeaderManager$: Observable<UIFlag>;
   showEditTaskButton = false;
   toggleShowEditTaskSubscription: Subscription;
 
   constructor(private UIservice: UiService, private appRouter: Router) {
-    this.toggleShowAddTaskButton$ = this.UIservice.addTaskButtonToggle$;
+    this.taskHeaderManager$ = this.UIservice.taskHeaderButton$;
   }
 
   ngOnInit(): void {

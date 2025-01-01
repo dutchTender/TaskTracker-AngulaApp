@@ -6,17 +6,15 @@ import {UIFlag} from '../UIFlag';
 })
 export class UiService {
 
-  private showAddTaskForm = false;
-  private addTaskFormToggleSubject = new Subject<boolean>();
-  addTaskFormToggle$: Observable<boolean> = this.toggleAddFormSubjectMultiCaster();
-
   private tasksHeader: UIFlag = {
     showAdd: true,
     showEdit: false
   };
-  private addTaskButtonToggleSubject = new BehaviorSubject<UIFlag>(this.tasksHeader);
-  addTaskButtonToggle$: Observable<UIFlag> = this.addTaskButtonToggleSubject.asObservable();
-
+  private taskHeaderManager = new BehaviorSubject<UIFlag>(this.tasksHeader);
+  taskHeaderButton$: Observable<UIFlag> = this.taskHeaderManager.asObservable();
+  private showAddTaskForm = false;
+  private addTaskFormToggleSubject = new Subject<boolean>();
+  addTaskFormToggle$: Observable<boolean> = this.toggleAddFormSubjectMultiCaster();
   private showEditTaskForm = false;
   private editTaskFormToggleSubject = new Subject<boolean>();
   editTaskFormToggle$: Observable<boolean> = this.toggleEditFormSubjectMultiCaster();
@@ -27,7 +25,7 @@ export class UiService {
   }
   toggleAddButton(): void{
     this.tasksHeader.showAdd = !this.tasksHeader.showAdd;
-    this.addTaskButtonToggleSubject.next(this.tasksHeader);
+    this.taskHeaderManager.next(this.tasksHeader);
   }
   toggleAddFormSubjectMultiCaster(): Observable<any>{
     return this.addTaskFormToggleSubject.asObservable();
@@ -40,7 +38,7 @@ export class UiService {
   openEditForm(): void{
     this.tasksHeader.showAdd = false;
     this.tasksHeader.showEdit = true;
-    this.addTaskButtonToggleSubject.next(this.tasksHeader);
+    this.taskHeaderManager.next(this.tasksHeader);
     this.showEditTaskForm = true;
     this.editTaskFormToggleSubject.next(this.showEditTaskForm);
   }
@@ -48,7 +46,7 @@ export class UiService {
   closeEditForm(): void{
     this.tasksHeader.showAdd = true;
     this.tasksHeader.showEdit = false;
-    this.addTaskButtonToggleSubject.next(this.tasksHeader);
+    this.taskHeaderManager.next(this.tasksHeader);
     this.showEditTaskForm = false;
     this.editTaskFormToggleSubject.next(this.showEditTaskForm);
   }
