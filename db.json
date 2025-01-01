@@ -19,10 +19,16 @@
       "id": 5
     },
     {
-      "day": "agfst",
-      "reminder": false,
-      "text": "new task test 22",
+      "day": "tommorow afternoon",
+      "reminder": true,
+      "text": "angular job interview ",
       "id": 6
+    },
+    {
+      "day": "next friday ",
+      "reminder": true,
+      "text": "on site interview with SEC",
+      "id": 7
     }
   ]
 }

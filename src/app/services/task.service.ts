@@ -18,6 +18,7 @@ export class TaskService {
   }
   removeTaskFromService( task: Task): Observable<Task>{
     const url: string =  this.apiUrl + '/' + task.id;
+    this.tasksData$ = this.getTasksFromService();
     return this.http.delete<Task>(url);
   }
 
@@ -30,6 +31,7 @@ export class TaskService {
 
   addTaskToService( task: Task): Observable<Task>{
     const url: string = this.apiUrl;
+    this.tasksData$ = this.getTasksFromService();
     return this.http.post<Task>(url, task, httpOptions);
   }
 }
