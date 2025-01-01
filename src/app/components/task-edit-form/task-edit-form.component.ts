@@ -9,16 +9,12 @@ import {UiService} from '../../services/ui.service';
   templateUrl: './task-edit-form.component.html',
   styleUrls: ['./task-edit-form.component.css']
 })
-export class TaskEditFormComponent implements OnInit, OnDestroy {
+export class TaskEditFormComponent{
   showTaskEditForm$: Observable<boolean>;
   @Input() updatedTask: Task;
   @Output() editTaskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
   constructor(private UIService: UiService) {
     this.showTaskEditForm$ = this.UIService.editTaskFormToggle$;
-  }
-  ngOnInit(): void {
-  }
-  ngOnDestroy(): void{
   }
   updateTask(): void{
      this.editTaskEmitter.emit(this.updatedTask);
