@@ -15,11 +15,11 @@ export class TaskListComponent implements OnInit, OnDestroy{
   focusedTask: Task = {
     day: '', reminder: null, text: ''
   };
-  constructor(private tService: TaskService, private UIService: UiService) { }
-
+  constructor(private tService: TaskService, private UIService: UiService) {
+    this.tasks$ = this.tService.tasksData$;
+  }
   ngOnInit(): void {
     /* call get tasks service, then update component rendering via updating component property this.tasks*/
-   this.tasks$ = this.tService.tasksData$;
   }
   ngOnDestroy(): void{
   }
