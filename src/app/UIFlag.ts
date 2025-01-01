@@ -1,3 +1,4 @@
 export interface UIFlag{
-  show: boolean;
+  showAdd: boolean;
+  showEdit: boolean;
 }

@@ -2,17 +2,17 @@
   <h2>{{title}}</h2>
   <div *ngIf="toggleShowAddTaskButton$ | async as showAddButton">
     <app-button
-      *ngIf="hasRoute('/tasks') && !showEditTaskButton"
-      buttonColor="{{showAddButton.show ? 'Green': 'Red'}}"
-      buttonText="{{showAddButton.show ? 'New Task': 'Close New Task'}}"
+      *ngIf="hasRoute('/tasks') && !showAddButton.showEdit"
+      buttonColor="{{showAddButton.showAdd ? 'Green': 'Red'}}"
+      buttonText="{{showAddButton.showAdd? 'New Task': 'Close New Task'}}"
       (btnClickedEmitter)="toggleAddBtnEventCatcher()">
     </app-button>
 
     <app-button
-      *ngIf="hasRoute('/tasks') && showEditTaskButton"
+      *ngIf="hasRoute('/tasks') && showAddButton.showEdit"
       buttonColor="red"
       buttonText="Close Edit Task"
-      (btnClickedEmitter)="toggleEditBtnEventCatcher()">
+      (btnClickedEmitter)="closeEditBtnEventCatcher()">
     </app-button>
   </div>
 

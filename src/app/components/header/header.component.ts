@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.UIservice.toggleAddButton();
     this.UIservice.toggleAddForm();
   }
-  toggleEditBtnEventCatcher(): void{
+  closeEditBtnEventCatcher(): void{
     this.UIservice.closeEditForm();
   }
   hasRoute(route: string): boolean{

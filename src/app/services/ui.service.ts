@@ -10,10 +10,11 @@ export class UiService {
   private addTaskFormToggleSubject = new Subject<boolean>();
   addTaskFormToggle$: Observable<boolean> = this.toggleAddFormSubjectMultiCaster();
 
-  private addTaskButtonFlag: UIFlag = {
-    show: true
+  private tasksHeader: UIFlag = {
+    showAdd: true,
+    showEdit: false
   };
-  private addTaskButtonToggleSubject = new BehaviorSubject<UIFlag>(this.addTaskButtonFlag);
+  private addTaskButtonToggleSubject = new BehaviorSubject<UIFlag>(this.tasksHeader);
   addTaskButtonToggle$: Observable<UIFlag> = this.addTaskButtonToggleSubject.asObservable();
 
   private showEditTaskForm = false;
@@ -25,8 +26,8 @@ export class UiService {
     this.addTaskFormToggleSubject.next(this.showAddTaskForm);
   }
   toggleAddButton(): void{
-    this.addTaskButtonFlag.show = !this.addTaskButtonFlag.show;
-    this.addTaskButtonToggleSubject.next(this.addTaskButtonFlag);
+    this.tasksHeader.showAdd = !this.tasksHeader.showAdd;
+    this.addTaskButtonToggleSubject.next(this.tasksHeader);
   }
   toggleAddFormSubjectMultiCaster(): Observable<any>{
     return this.addTaskFormToggleSubject.asObservable();
@@ -37,11 +38,17 @@ export class UiService {
   }
 
   openEditForm(): void{
+    this.tasksHeader.showAdd = false;
+    this.tasksHeader.showEdit = true;
+    this.addTaskButtonToggleSubject.next(this.tasksHeader);
     this.showEditTaskForm = true;
     this.editTaskFormToggleSubject.next(this.showEditTaskForm);
   }
 
   closeEditForm(): void{
+    this.tasksHeader.showAdd = true;
+    this.tasksHeader.showEdit = false;
+    this.addTaskButtonToggleSubject.next(this.tasksHeader);
     this.showEditTaskForm = false;
     this.editTaskFormToggleSubject.next(this.showEditTaskForm);
   }
