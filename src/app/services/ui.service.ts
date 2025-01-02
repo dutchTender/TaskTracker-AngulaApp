@@ -12,12 +12,14 @@ export class UiService {
   };
   private taskHeaderManager = new BehaviorSubject<UIFlag>(this.tasksHeader);
   taskHeaderButton$: Observable<UIFlag> = this.taskHeaderManager.asObservable();
+
   private showAddTaskForm = false;
   private addTaskFormToggleSubject = new Subject<boolean>();
-  addTaskFormToggle$: Observable<boolean> = this.toggleAddFormSubjectMultiCaster();
+  addTaskFormToggle$: Observable<boolean> = this.toggleAddFormSubject();
+
   private showEditTaskForm = false;
   private editTaskFormToggleSubject = new Subject<boolean>();
-  editTaskFormToggle$: Observable<boolean> = this.toggleEditFormSubjectMultiCaster();
+  editTaskFormToggle$: Observable<boolean> = this.toggleEditFormSubject();
   constructor() { }
   toggleAddForm(): void{
     this.showAddTaskForm = !this.showAddTaskForm;
@@ -27,11 +29,10 @@ export class UiService {
     this.tasksHeader.showAdd = !this.tasksHeader.showAdd;
     this.taskHeaderManager.next(this.tasksHeader);
   }
-  toggleAddFormSubjectMultiCaster(): Observable<any>{
+  private toggleAddFormSubject(): Observable<any>{
     return this.addTaskFormToggleSubject.asObservable();
   }
-
-  toggleEditFormSubjectMultiCaster(): Observable<any>{
+  private toggleEditFormSubject(): Observable<any>{
     return this.editTaskFormToggleSubject.asObservable();
   }
   openEditForm(): void{

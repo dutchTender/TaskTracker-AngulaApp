@@ -14,7 +14,7 @@
     },
     {
       "day": "every day after school aegws",
-      "reminder": false,
+      "reminder": true,
       "text": "basketball practice at community center",
       "id": 5
     },

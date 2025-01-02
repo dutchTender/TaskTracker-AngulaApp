@@ -18,12 +18,6 @@ export class TaskListComponent{
   constructor(private tService: TaskService, private UIService: UiService) {
     this.tasks$ = this.tService.tasksData$;
   }
-  taskDeleteEventCatcher(task: Task): void{
-    /* call delete service, then update component rendering via updating component property this.tasks */
-    this.tService.removeTaskFromService(task).subscribe((removedTask: Task) => (
-      this.tasks$ = this.tService.tasksData$
-    ));
-  }
   taskUpdateFormOpenEventCatcher(task: Task): void{
     this.focusedTask.day = task.day;
     this.focusedTask.text = task.text;
@@ -38,6 +32,12 @@ export class TaskListComponent{
   }
   taskUpdateEventCatcher(task: Task): void{
     this.tService.updateTaskToService(task).subscribe((addedTask: Task) => (
+      this.tasks$ = this.tService.tasksData$
+    ));
+  }
+  taskDeleteEventCatcher(task: Task): void{
+    /* call delete service, then update component rendering via updating component property this.tasks */
+    this.tService.removeTaskFromService(task).subscribe((removedTask: Task) => (
       this.tasks$ = this.tService.tasksData$
     ));
   }
