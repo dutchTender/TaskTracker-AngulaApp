@@ -2,8 +2,6 @@ import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angu
 import {Task} from '../../Task';
 import {Observable, Subscription} from 'rxjs';
 import {UiService} from '../../services/ui.service';
-
-
 @Component({
   selector: 'app-edit-task-form',
   templateUrl: './task-edit-form.component.html',
