@@ -20,6 +20,12 @@ export class UiService {
   private showEditTaskForm = false;
   private editTaskFormToggleSubject = new Subject<boolean>();
   editTaskFormToggle$: Observable<boolean> = this.toggleEditFormSubject();
+  private toggleAddFormSubject(): Observable<any>{
+    return this.addTaskFormToggleSubject.asObservable();
+  }
+  private toggleEditFormSubject(): Observable<any>{
+    return this.editTaskFormToggleSubject.asObservable();
+  }
   constructor() { }
   toggleAddForm(): void{
     this.showAddTaskForm = !this.showAddTaskForm;
@@ -28,12 +34,6 @@ export class UiService {
   toggleAddButton(): void{
     this.tasksHeader.showAdd = !this.tasksHeader.showAdd;
     this.taskHeaderManager.next(this.tasksHeader);
-  }
-  private toggleAddFormSubject(): Observable<any>{
-    return this.addTaskFormToggleSubject.asObservable();
-  }
-  private toggleEditFormSubject(): Observable<any>{
-    return this.editTaskFormToggleSubject.asObservable();
   }
   openEditForm(): void{
     this.tasksHeader.showAdd = false;

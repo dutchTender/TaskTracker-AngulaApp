@@ -16,7 +16,6 @@ export class HeaderComponent{
   constructor(private UIservice: UiService, private appRouter: Router) {
     this.taskHeaderManager$ = this.UIservice.taskHeaderButton$;
   }
-  // tslint:disable-next-line:typedef
   toggleAddBtnEventCatcher(): void {
     this.UIservice.toggleAddButton();
     this.UIservice.toggleAddForm();
