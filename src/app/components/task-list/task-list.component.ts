@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Task} from '../../Task';
 import {TaskService} from '../../services/task.service';
 import {UiService} from '../../services/ui.service';
-import {Observable, Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-task-list',
@@ -10,7 +10,6 @@ import {Observable, Subscription} from 'rxjs';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent{
-
   tasks$: Observable<Task[]>;
   focusedTask: Task = {
     day: '', reminder: null, text: ''
@@ -41,5 +40,4 @@ export class TaskListComponent{
       this.tasks$ = this.tService.tasksData$
     ));
   }
-
 }
