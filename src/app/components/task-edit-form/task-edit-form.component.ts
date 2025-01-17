@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {Task} from '../../Task';
-import {Observable, Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 import {UiService} from '../../services/ui.service';
 @Component({
   selector: 'app-edit-task-form',
