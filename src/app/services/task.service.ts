@@ -17,7 +17,7 @@ export class TaskService {
     // @ts-ignore
     return this.http.get<Task[]>(this.apiUrl).pipe(
       tap(task => console.log(JSON.stringify(task))),
-      switchMap( task => task)
+      switchMap( task => task),
     );
   }
   removeTaskFromService( task: Task): Observable<Task>{
