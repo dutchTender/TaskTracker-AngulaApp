@@ -23,7 +23,7 @@ export class TaskItemComponent implements OnInit {
     this.deleteTaskEmitter.emit(this.task);
   }
 
-  openUpdateTaskForm(): void{ // we need to cast an even to tasks list. similar to how add button casted and event to tasks list
+  openUpdateTaskForm(): void{ // we need to cast an even to tasks list. similar to how add button cast and event to tasks list
     this.openEditTaskFormEmitter.emit(this.task);
   }
 }
