@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Task} from '../Task';
-import {switchMap, tap} from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -15,10 +14,7 @@ export class TaskService {
   constructor( private http: HttpClient) { }
   private getTasksFromService(): Observable<Task[]>{
     // @ts-ignore
-    return this.http.get<Task[]>(this.apiUrl).pipe(
-      tap(task => console.log(JSON.stringify(task))),
-      switchMap( task => task),
-    );
+    return this.http.get<Task[]>(this.apiUrl);
   }
   removeTaskFromService( task: Task): Observable<Task>{
     const url: string =  this.apiUrl + '/' + task.id;
