@@ -4,7 +4,9 @@ import * as taskActions from '../ngRx/actions/taskActions';
 import {TaskService} from '../../services/task.service';
 import {UiService} from '../../services/ui.service';
 import {Observable} from 'rxjs';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
+import {TaskAppStateWrapper} from '../ngRx/state/AppGlobalStateWrapper';
+import {taskLoadingSelector} from '../ngRx/selectors/taskSelectors';
 
 @Component({
   selector: 'app-task-list',
@@ -13,12 +15,14 @@ import {Store} from '@ngrx/store';
 })
 export class TaskListComponent{
   tasks$: Observable<Task[]>;
+  isLoading$: Observable<boolean>;
   focusedTask: Task = {
     day: '', reminder: null, text: ''
   };
-  constructor(private tService: TaskService, private UIService: UiService, private ngRxStore: Store) {
-    this.tasks$ = this.tService.tasksData$;
+  constructor(private tService: TaskService, private UIService: UiService, private ngRxStore: Store<TaskAppStateWrapper>) {
+    // this.tasks$ = this.tService.tasksData$;
     this.ngRxStore.dispatch(taskActions.getTasks());
+    this.isLoading$ = this.ngRxStore.pipe(select(taskLoadingSelector));
   }
   taskUpdateFormOpenEventCatcher(task: Task): void{
     this.focusedTask.day = task.day;

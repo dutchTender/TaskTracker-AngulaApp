@@ -52,7 +52,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
-    StoreModule.forRoot({taskReducer}),
+    StoreModule.forRoot({appData: taskReducer}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
