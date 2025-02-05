@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import {Task} from '../../Task';
+import {Task} from '../interfaces/Task';
 import {Observable} from 'rxjs';
 import {UiService} from '../../services/ui.service';
 @Component({

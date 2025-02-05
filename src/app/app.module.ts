@@ -15,6 +15,10 @@ import { AddTaskFormComponent } from './components/add-task-form/add-task-form.c
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { FooterPageComponent } from './components/footer-page/footer-page.component';
 import { TaskEditFormComponent } from './components/task-edit-form/task-edit-form.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 
 const appRoutes: Routes = [
@@ -45,7 +49,10 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes, {enableTracing: true})
+    RouterModule.forRoot(appRoutes, {enableTracing: false}),
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

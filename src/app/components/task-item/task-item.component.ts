@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import {EventEmitter} from '@angular/core';
-import {Task} from '../../Task';
+import {Task} from '../interfaces/Task';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -25,5 +25,6 @@ export class TaskItemComponent implements OnInit {
 
   openUpdateTaskForm(): void{ // we need to cast an even to tasks list. similar to how add button cast and event to tasks list
     this.openEditTaskFormEmitter.emit(this.task);
+    // this will become a subject.next(taskID) call
   }
 }

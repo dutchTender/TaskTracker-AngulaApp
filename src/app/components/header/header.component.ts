@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {UiService} from '../../services/ui.service';
 import { Observable} from 'rxjs';
 import {Router} from '@angular/router';
-import {UIFlag} from '../../UIFlag';
+import {UIFlag} from '../interfaces/UIFlag';
 
 @Component({
   selector: 'app-header',

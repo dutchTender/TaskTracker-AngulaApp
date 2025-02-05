@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Task} from '../../Task';
+import {Task} from '../interfaces/Task';
 import {TaskService} from '../../services/task.service';
 import {UiService} from '../../services/ui.service';
 import {Observable} from 'rxjs';

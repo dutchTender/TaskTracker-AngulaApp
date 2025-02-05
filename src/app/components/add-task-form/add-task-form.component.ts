@@ -1,7 +1,7 @@
-import {Component, OnInit, Output, EventEmitter, OnDestroy} from '@angular/core';
-import {Task} from '../../Task';
+import {Component, Output, EventEmitter} from '@angular/core';
+import {Task} from '../interfaces/Task';
 import {UiService} from '../../services/ui.service';
-import {Observable, Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 @Component({
   selector: 'app-add-task-form',
   templateUrl: './add-task-form.component.html',

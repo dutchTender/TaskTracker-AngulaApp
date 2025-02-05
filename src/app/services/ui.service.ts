@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {UIFlag} from '../UIFlag';
+import {UIFlag} from '../components/interfaces/UIFlag';
 @Injectable({
   providedIn: 'root'
 })
