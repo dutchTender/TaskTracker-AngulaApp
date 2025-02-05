@@ -8,7 +8,8 @@ export class UiService {
 
   private tasksHeader: UIFlag = {
     showAdd: true,
-    showEdit: false
+    showEdit: false,
+    isLoading: false
   };
   private taskHeaderManager = new BehaviorSubject<UIFlag>(this.tasksHeader);
   taskHeaderButton$: Observable<UIFlag> = this.taskHeaderManager.asObservable();

@@ -19,6 +19,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import {taskReducer} from './components/ngRx/reducers/taskReducers';
 
 
 const appRoutes: Routes = [
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
     path: 'about', component: AboutPageComponent
   }
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({taskReducer}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
