@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
 import {Task} from '../interfaces/Task';
+import * as taskActions from '../ngRx/actions/taskActions';
 import {TaskService} from '../../services/task.service';
 import {UiService} from '../../services/ui.service';
 import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-task-list',
@@ -14,8 +16,9 @@ export class TaskListComponent{
   focusedTask: Task = {
     day: '', reminder: null, text: ''
   };
-  constructor(private tService: TaskService, private UIService: UiService) {
+  constructor(private tService: TaskService, private UIService: UiService, private ngRxStore: Store) {
     this.tasks$ = this.tService.tasksData$;
+    this.ngRxStore.dispatch(taskActions.getTasks());
   }
   taskUpdateFormOpenEventCatcher(task: Task): void{
     this.focusedTask.day = task.day;

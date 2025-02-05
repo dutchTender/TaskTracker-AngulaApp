@@ -6,8 +6,7 @@ export const initialState: TaskAppState = {
   error: '', focusedTask: {text: '', reminder: false, day: '' }, taskList: [], uiManager: {showAdd: true, showEdit: false, isLoading: false}
 };
 
-export const taskReducer = createReducer(
-  initialState,
+export const taskReducer = createReducer(initialState,
   on( TaskActions.getTasks, (currentState) => (
     {...currentState, uiManager: {showAdd: true, showEdit: false, isLoading: true} }
   )),
