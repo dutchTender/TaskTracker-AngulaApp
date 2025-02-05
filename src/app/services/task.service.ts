@@ -12,7 +12,7 @@ export class TaskService {
   private apiUrl = 'http://localhost:5500/tasks';
   tasksData$ = this.getTasksFromService();
   constructor( private http: HttpClient) { }
-  private getTasksFromService(): Observable<Task[]>{
+  getTasksFromService(): Observable<Task[]>{
     // @ts-ignore
     return this.http.get<Task[]>(this.apiUrl);
   }

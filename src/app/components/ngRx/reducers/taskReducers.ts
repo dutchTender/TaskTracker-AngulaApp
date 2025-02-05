@@ -14,6 +14,6 @@ export const taskReducer = createReducer(initialState,
     {...currentState,  taskList: taskAction.userTasks, uiManager: {showAdd: true, showEdit: false, isLoading: false} }
   )),
   on( TaskActions.getTasksFailure, (currentState, taskAction) => (
-    {...currentState, error: taskAction.tasksError, uiManager: {showAdd: true, showEdit: false, isLoading: false}}
+    {...currentState, error: taskAction.taskErrors, uiManager: {showAdd: true, showEdit: false, isLoading: false}}
   )),
 );

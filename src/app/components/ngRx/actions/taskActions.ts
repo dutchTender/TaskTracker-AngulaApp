@@ -6,7 +6,7 @@ export const openEditTaskForm = createAction('[Tasks] Open Edit Task Form');
 
 export const getTasks = createAction('[Task] Get task list');
 export const getTasksSuccess = createAction('[Task] Get task success', props<{userTasks: Task[]}>());
-export const getTasksFailure = createAction('[Task] Get task success', props<{tasksError: string}>());
+export const getTasksFailure = createAction('[Task] Get task success', props<{taskErrors: string}>());
 
 
 export const createTask = createAction('[Task] Create task');
