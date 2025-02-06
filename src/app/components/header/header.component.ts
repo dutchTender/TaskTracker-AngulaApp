@@ -5,7 +5,7 @@ import { Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {UIFlag} from '../interfaces/UIFlag';
 import {select, Store} from '@ngrx/store';
-
+import * as taskActions from '../ngRx/actions/taskActions';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
     // otherwise we will need to implement a toggle mechanism
     // toggle the add button flag only. false, false on the flags. will produce the close button for add
     this.UIService.toggleAddButton();
+    this.ngRxStore.dispatch(taskActions.openNewTaskForm({uiManager: {showAdd: false, showEdit: false, isLoading: false } }));
     this.UIService.toggleAddForm();
   }
   closeEditBtnEventCatcher(): void{
