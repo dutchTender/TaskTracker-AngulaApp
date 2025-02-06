@@ -7,10 +7,12 @@ import {of} from 'rxjs';
 
 @Injectable()
 export class TaskAppStateEffects{
-
+  constructor(private taskService: TaskService, private taskActions$: Actions) {
+  }
   getTasks$ = createEffect( () => this.taskActions$.pipe(
       tap(action => console.log(action.type)),
-      ofType(taskActions.getTasks), mergeMap( () => {
+      ofType(taskActions.getTasks),
+      mergeMap( () => {
         return this.taskService.tasksData$.pipe(
           map((userTasks) => taskActions.getTasksSuccess({userTasks})),
           catchError( (taskErrors) => of(taskActions.getTasksFailure({taskErrors}))  )
@@ -18,7 +20,4 @@ export class TaskAppStateEffects{
       })
     )
   );
-
-  constructor(private taskService: TaskService, private taskActions$: Actions) {
-  }
 }
