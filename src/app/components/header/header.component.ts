@@ -15,19 +15,18 @@ export class HeaderComponent{
 
   title = 'Task Tracker';
   taskHeaderManager$: Observable<UIFlag>; // this will be reset to ngRx selector
-  constructor(private UIservice: UiService, private appRouter: Router, ngRxStore: Store) {
-    // this.taskHeaderManager$ = this.UIservice.taskHeaderButton$;
+  constructor(private UIService: UiService, private appRouter: Router, ngRxStore: Store) {
     this.taskHeaderManager$ = ngRxStore.pipe(select(uiManagerSelector));
   }
   toggleAddBtnEventCatcher(): void {
     // we need to dispatch either open add form, or close add form
     // otherwise we will need to implement a toggle mechanism
-    this.UIservice.toggleAddButton();
-    this.UIservice.toggleAddForm();
+    this.UIService.toggleAddButton();
+    this.UIService.toggleAddForm();
   }
   closeEditBtnEventCatcher(): void{
     // here we simply need to dispatch the close edit form action
-    this.UIservice.closeEditForm();
+    this.UIService.closeEditForm();
   }
   hasRoute(route: string): boolean{
     return this.appRouter.url === route;
