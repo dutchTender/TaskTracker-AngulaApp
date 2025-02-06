@@ -35,6 +35,11 @@
       "reminder": true,
       "text": "sdfsdfs",
       "id": 8
+    },
+    {
+      "day": "sadsada",
+      "text": "sadasd",
+      "id": 9
     }
   ]
 }

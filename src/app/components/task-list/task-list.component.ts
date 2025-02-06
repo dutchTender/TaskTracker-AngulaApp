@@ -29,6 +29,7 @@ export class TaskListComponent implements OnInit {
   }
   constructor(private tService: TaskService, private UIService: UiService, private ngRxStore: Store<TaskAppStateWrapper>) {
   }
+
   taskUpdateFormOpenEventCatcher(task: Task): void{
     this.focusedTask.day = task.day;
     this.focusedTask.text = task.text;
@@ -39,6 +40,7 @@ export class TaskListComponent implements OnInit {
   taskAddEventCatcher(task: Task): void{
     this.tService.addTaskToService(task).subscribe((addedTask: Task) => (
       this.reloadData()
+      // new logic will get the returned data set to focused data and load the edit params
     ));
   }
   taskUpdateEventCatcher(task: Task): void{
