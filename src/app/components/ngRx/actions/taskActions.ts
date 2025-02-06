@@ -2,7 +2,7 @@ import {createAction, props} from '@ngrx/store';
 import {Task} from '../../interfaces/Task';
 import {UIFlag} from '../../interfaces/UIFlag';
 
-export const openNewTaskForm = createAction('[Tasks] Open New Task Form', props<{uiManager: UIFlag}>());
+export const toggleNewTaskForm = createAction('[Tasks] Open New Task Form', props<{uiManager: UIFlag}>());
 export const openEditTaskForm = createAction('[Tasks] Open Edit Task Form', props<{uiManager: UIFlag}>());
 
 export const getTasks = createAction('[Task] Get task list');
