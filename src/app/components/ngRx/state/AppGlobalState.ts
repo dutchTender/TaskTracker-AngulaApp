@@ -5,5 +5,6 @@ export interface TaskAppState {
   uiManager: UIFlag;
   focusedTask: Task;
   taskList: Task[];
+  isLoading: boolean;
   error: string | null;
 }

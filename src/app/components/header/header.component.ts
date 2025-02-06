@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   title = 'Task Tracker';
   taskHeaderManager$: Observable<UIFlag>; // this will be reset to ngRx selector
   addToggle = false;
+  addFormToggle = true;
   constructor(private UIService: UiService, private appRouter: Router, private ngRxStore: Store) {
   }
   toggleAddBtnEventCatcher(): void {
@@ -23,9 +24,11 @@ export class HeaderComponent implements OnInit {
     // otherwise we will need to implement a toggle mechanism
     // toggle the add button flag only. false, false on the flags. will produce the close button for add
     // this.UIService.toggleAddButton();
-    this.ngRxStore.dispatch(taskActions.toggleNewTaskForm({uiManager: {showAdd: this.addToggle, showEdit: false, isLoading: false } }));
+    this.ngRxStore.dispatch(taskActions.toggleNewTaskForm({
+      uiManager: {showAddButton: this.addToggle, showAddTaskForm: this.addFormToggle, showEdit: false } }));
     this.addToggle = !this.addToggle;
-    this.UIService.toggleAddForm();
+    this.addFormToggle = !this.addFormToggle;
+    // this.UIService.toggleAddForm();
   }
   closeEditBtnEventCatcher(): void{
     // here we simply need to dispatch the close edit form action

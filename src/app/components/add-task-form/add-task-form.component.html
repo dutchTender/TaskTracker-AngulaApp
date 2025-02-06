@@ -1,5 +1,5 @@
 <div *ngIf="showAddTaskForm$ | async as showAddTask">
-  <form *ngIf="showAddTask" class="add-form" (ngSubmit)="createNewTask()">
+  <form *ngIf="showAddTask.showAddTaskForm=== true" class="add-form" (ngSubmit)="createNewTask()">
     <div class="form-control">
       <label for="text">Task Description</label>
       <input type="text" name="text" [(ngModel)]="taskText"  id="text" placeholder="Add Task"/>

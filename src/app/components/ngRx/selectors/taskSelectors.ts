@@ -5,7 +5,7 @@ export const taskFeatureSlice = (dataState: TaskAppStateWrapper) =>  dataState.a
 
 export const taskLoadingSelector = createSelector(
     taskFeatureSlice,
-   (dataState) => dataState.uiManager.isLoading
+   (dataState) => dataState.isLoading
 );
 
 export const taskListSelector = createSelector(

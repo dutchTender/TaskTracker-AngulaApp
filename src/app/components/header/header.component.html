@@ -3,8 +3,8 @@
   <div *ngIf="taskHeaderManager$ | async as headerButton">
     <app-button
       *ngIf="hasRoute('/tasks') && !headerButton.showEdit"
-      buttonColor="{{headerButton.showAdd ? 'Green': 'Red'}}"
-      buttonText="{{headerButton.showAdd? 'New Task': 'Close New Task'}}"
+      buttonColor="{{headerButton.showAddButton ? 'Green': 'Red'}}"
+      buttonText="{{headerButton.showAddButton? 'New Task': 'Close New Task'}}"
       (btnClickedEmitter)="toggleAddBtnEventCatcher()">
     </app-button>
 

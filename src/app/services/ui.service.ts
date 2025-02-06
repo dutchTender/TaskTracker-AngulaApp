@@ -7,9 +7,9 @@ import {UIFlag} from '../components/interfaces/UIFlag';
 export class UiService {
 
   private tasksHeader: UIFlag = {
-    showAdd: true,
+    showAddButton: true,
+    showAddTaskForm: false,
     showEdit: false,
-    isLoading: false
   };
   private taskHeaderManager = new BehaviorSubject<UIFlag>(this.tasksHeader);
   taskHeaderButton$: Observable<UIFlag> = this.taskHeaderManager.asObservable();
@@ -33,18 +33,18 @@ export class UiService {
     this.addTaskFormToggleSubject.next(this.showAddTaskForm);
   }
   toggleAddButton(): void{
-    this.tasksHeader.showAdd = !this.tasksHeader.showAdd;
+    this.tasksHeader.showAddButton = !this.tasksHeader.showAddButton;
     this.taskHeaderManager.next(this.tasksHeader);
   }
   openEditForm(): void{
-    this.tasksHeader.showAdd = false;
+    this.tasksHeader.showAddButton = false;
     this.tasksHeader.showEdit = true;
     this.taskHeaderManager.next(this.tasksHeader);
     this.showEditTaskForm = true;
     this.editTaskFormToggleSubject.next(this.showEditTaskForm);
   }
   closeEditForm(): void{
-    this.tasksHeader.showAdd = true;
+    this.tasksHeader.showAddButton = true;
     this.tasksHeader.showEdit = false;
     this.taskHeaderManager.next(this.tasksHeader);
     this.showEditTaskForm = false;

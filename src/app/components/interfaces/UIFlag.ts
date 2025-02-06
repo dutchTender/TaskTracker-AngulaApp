@@ -1,5 +1,5 @@
 export interface UIFlag{
-  showAdd: boolean;
+  showAddButton: boolean;
+  showAddTaskForm: boolean;
   showEdit: boolean;
-  isLoading: boolean;
 }
