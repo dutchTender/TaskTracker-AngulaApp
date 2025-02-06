@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {uiManagerSelector} from '../ngRx/selectors/taskSelectors';
 import {UiService} from '../../services/ui.service';
-import {Observable, Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {UIFlag} from '../interfaces/UIFlag';
 import {select, Store} from '@ngrx/store';
 import * as taskActions from '../ngRx/actions/taskActions';
+import {map} from 'rxjs/operators';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -15,10 +17,8 @@ export class HeaderComponent implements OnInit {
 
   title = 'Task Tracker';
   taskHeaderManager$: Observable<UIFlag>; // this will be reset to ngRx selector
-  addToggle: boolean;
-  setAddToggle: Subscription;
-  addFormToggle: boolean;
-  setAddFormToggle: Subscription;
+  addToggle = true;
+  addFormToggle = false;
 
   constructor(private UIService: UiService, private appRouter: Router, private ngRxStore: Store) {
   }
@@ -38,14 +38,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskHeaderManager$ = this.ngRxStore.pipe(select(uiManagerSelector));
+    this.taskHeaderManager$.pipe(map(taskHeaderManager => {
+      this.addToggle = taskHeaderManager.showAddButton;
+      this.addFormToggle = taskHeaderManager.showAddTaskForm;
+    }));
 
-    // rewrite these two subscriptions with a pipe that sets these two values
-    this.setAddToggle = this.taskHeaderManager$.subscribe(uiManager =>
-      this.addToggle = uiManager.showAddButton
-    );
-
-    this.setAddFormToggle = this.taskHeaderManager$.subscribe(uiManager =>
-      this.addFormToggle = uiManager.showAddTaskForm
-    );
   }
 }
