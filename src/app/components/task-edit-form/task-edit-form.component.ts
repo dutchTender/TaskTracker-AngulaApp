@@ -1,7 +1,6 @@
 import {Component, Output, EventEmitter, OnInit} from '@angular/core';
 import {Task} from '../interfaces/Task';
 import {Observable} from 'rxjs';
-import {UiService} from '../../services/ui.service';
 import {select, Store} from '@ngrx/store';
 import {focusedTaskSelector, uiManagerSelector} from '../ngRx/selectors/taskSelectors';
 import {UIFlag} from '../interfaces/UIFlag';
@@ -14,7 +13,7 @@ export class TaskEditFormComponent implements OnInit {
   showTaskEditForm$: Observable<UIFlag>;
   updatedTask$: Observable<Task>;
   @Output() editTaskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
-  constructor(private UIService: UiService, private ngRxStore: Store) {
+  constructor(private ngRxStore: Store) {
   }
   updateTask(): void{
      // this.editTaskEmitter.emit(this.updatedTask);

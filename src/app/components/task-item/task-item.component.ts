@@ -25,6 +25,5 @@ export class TaskItemComponent implements OnInit {
 
   openUpdateTaskForm(): void{ // we need to cast an even to tasks list. similar to how add button cast and event to tasks list
     this.openEditTaskFormEmitter.emit(this.task);
-    // this will become a subject.next(taskID) call
   }
 }

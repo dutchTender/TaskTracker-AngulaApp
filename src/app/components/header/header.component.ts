@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {uiManagerSelector} from '../ngRx/selectors/taskSelectors';
-import {UiService} from '../../services/ui.service';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {UIFlag} from '../interfaces/UIFlag';
@@ -20,7 +19,7 @@ export class HeaderComponent implements OnInit {
   addToggle = true;
   addFormToggle = false;
 
-  constructor(private UIService: UiService, private appRouter: Router, private ngRxStore: Store) {
+  constructor(private appRouter: Router, private ngRxStore: Store) {
   }
   toggleAddBtnEventCatcher(): void {
     this.addToggle = !this.addToggle;
@@ -30,7 +29,9 @@ export class HeaderComponent implements OnInit {
   }
   closeEditBtnEventCatcher(): void{
     // here we simply need to dispatch the close edit form action
-    this.UIService.closeEditForm();
+    // this.UIService.closeEditForm();
+    this.ngRxStore.dispatch(taskActions.closeEditTaskForm({
+      focusedTask: null, uiManager: {showAddButton: true, showAddTaskForm: false, showEdit: false } }));
   }
   hasRoute(route: string): boolean{
     return this.appRouter.url === route;
