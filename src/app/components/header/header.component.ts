@@ -3,6 +3,7 @@ import {UiService} from '../../services/ui.service';
 import { Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {UIFlag} from '../interfaces/UIFlag';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-header',
@@ -12,15 +13,18 @@ import {UIFlag} from '../interfaces/UIFlag';
 export class HeaderComponent{
 
   title = 'Task Tracker';
-  taskHeaderManager$: Observable<UIFlag>;
-  constructor(private UIservice: UiService, private appRouter: Router) {
+  taskHeaderManager$: Observable<UIFlag>; // this will be reset to ngRx selector
+  constructor(private UIservice: UiService, private appRouter: Router, ngRxStore: Store) {
     this.taskHeaderManager$ = this.UIservice.taskHeaderButton$;
   }
   toggleAddBtnEventCatcher(): void {
+    // we need to dispatch either open add form, or close add form
+    // otherwise we will need to implement a toggle mechanism
     this.UIservice.toggleAddButton();
     this.UIservice.toggleAddForm();
   }
   closeEditBtnEventCatcher(): void{
+    // here we simply need to dispatch the close edit form action
     this.UIservice.closeEditForm();
   }
   hasRoute(route: string): boolean{
