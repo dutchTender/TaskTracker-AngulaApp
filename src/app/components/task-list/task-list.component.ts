@@ -19,11 +19,15 @@ export class TaskListComponent{
   focusedTask: Task = {
     day: '', reminder: null, text: ''
   };
-  constructor(private tService: TaskService, private UIService: UiService, private ngRxStore: Store<TaskAppStateWrapper>) {
-    // this.tasks$ = this.tService.tasksData$;
+
+  private reloadData(): void{
     this.ngRxStore.dispatch(taskActions.getTasks());
     this.isLoading$ = this.ngRxStore.pipe(select(taskLoadingSelector));
     this.tasks$ = this.ngRxStore.pipe(select(taskListSelector));
+  }
+  constructor(private tService: TaskService, private UIService: UiService, private ngRxStore: Store<TaskAppStateWrapper>) {
+    // this.tasks$ = this.tService.tasksData$;
+    this.reloadData();
   }
   taskUpdateFormOpenEventCatcher(task: Task): void{
     this.focusedTask.day = task.day;
@@ -34,18 +38,20 @@ export class TaskListComponent{
   }
   taskAddEventCatcher(task: Task): void{
     this.tService.addTaskToService(task).subscribe((addedTask: Task) => (
-      this.tasks$ = this.tService.tasksData$
+      this.reloadData()
     ));
   }
   taskUpdateEventCatcher(task: Task): void{
     this.tService.updateTaskToService(task).subscribe((addedTask: Task) => (
-      this.tasks$ = this.tService.tasksData$
+      this.reloadData()
     ));
   }
   taskDeleteEventCatcher(task: Task): void{
     /* call delete service, then update component rendering via updating component property this.tasks */
     this.tService.removeTaskFromService(task).subscribe((removedTask: Task) => (
-      this.tasks$ = this.tService.tasksData$
+      this.reloadData()
     ));
   }
+
+
 }
