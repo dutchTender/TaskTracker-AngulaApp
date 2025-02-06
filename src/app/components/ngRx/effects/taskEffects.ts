@@ -15,7 +15,7 @@ export class TaskAppStateEffects{
       mergeMap( () => {
         return this.taskService.tasksData$.pipe(
           map((userTasks) => taskActions.getTasksSuccess({userTasks})),
-          catchError( (taskErrors) => of(taskActions.getTasksFailure({taskErrors}))  )
+          catchError( (taskErrors) => of(taskActions.getTasksFailure({taskErrors})))
         );
       })
     )

@@ -5,12 +5,21 @@ export const taskFeatureSlice = (dataState: TaskAppStateWrapper) =>  dataState.a
 
 export const taskLoadingSelector = createSelector(
     taskFeatureSlice,
-   (dataState) => dataState.uiManager.isLoading);
+   (dataState) => dataState.uiManager.isLoading
+);
 
 export const taskListSelector = createSelector(
   taskFeatureSlice,
-  (dataState) => dataState.taskList);
+  (dataState) => dataState.taskList
+);
 
 export const taskErrorSelector = createSelector(
   taskFeatureSlice,
-  (dataState) => dataState.error);
+  (dataState) => dataState.error
+);
+
+export const uiManagerSelector = createSelector(
+  taskFeatureSlice,
+  (dataState) => dataState.uiManager
+);
+

@@ -3,7 +3,8 @@ import {createReducer, on} from '@ngrx/store';
 import * as TaskActions from '../actions/taskActions';
 
 export const initialState: TaskAppState = {
-  error: '', focusedTask: {text: '', reminder: false, day: '' }, taskList: [], uiManager: {showAdd: true, showEdit: false, isLoading: false}
+  error: null, focusedTask: {text: '', reminder: false, day: '' },
+  taskList: [], uiManager: {showAdd: false, showEdit: true, isLoading: false}
 };
 
 export const taskReducer = createReducer(initialState,
@@ -11,9 +12,9 @@ export const taskReducer = createReducer(initialState,
     {...currentState, uiManager: {showAdd: true, showEdit: false, isLoading: true} }
   )),
   on( TaskActions.getTasksSuccess, (currentState, taskAction) => (
-    {...currentState,  taskList: taskAction.userTasks, uiManager: {showAdd: true, showEdit: false, isLoading: false} }
+    {...currentState,  taskList: taskAction.userTasks, uiManager: {showAdd: true, showEdit: false, isLoading: false}, error: null }
   )),
   on( TaskActions.getTasksFailure, (currentState, taskAction) => (
-    {...currentState, error: taskAction.taskErrors, uiManager: {showAdd: true, showEdit: false, isLoading: false}}
+    {...currentState, uiManager: {showAdd: true, showEdit: false, isLoading: false}, error: taskAction.taskErrors}
   )),
 );

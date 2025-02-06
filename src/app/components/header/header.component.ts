@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
+import {uiManagerSelector} from '../ngRx/selectors/taskSelectors';
 import {UiService} from '../../services/ui.service';
 import { Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {UIFlag} from '../interfaces/UIFlag';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ export class HeaderComponent{
   title = 'Task Tracker';
   taskHeaderManager$: Observable<UIFlag>; // this will be reset to ngRx selector
   constructor(private UIservice: UiService, private appRouter: Router, ngRxStore: Store) {
-    this.taskHeaderManager$ = this.UIservice.taskHeaderButton$;
+    // this.taskHeaderManager$ = this.UIservice.taskHeaderButton$;
+    this.taskHeaderManager$ = ngRxStore.pipe(select(uiManagerSelector));
   }
   toggleAddBtnEventCatcher(): void {
     // we need to dispatch either open add form, or close add form
