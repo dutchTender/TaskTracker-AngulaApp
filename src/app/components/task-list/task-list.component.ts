@@ -6,7 +6,7 @@ import {UiService} from '../../services/ui.service';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {TaskAppStateWrapper} from '../ngRx/state/AppGlobalStateWrapper';
-import {taskLoadingSelector} from '../ngRx/selectors/taskSelectors';
+import {taskListSelector, taskLoadingSelector} from '../ngRx/selectors/taskSelectors';
 
 @Component({
   selector: 'app-task-list',
@@ -23,6 +23,7 @@ export class TaskListComponent{
     // this.tasks$ = this.tService.tasksData$;
     this.ngRxStore.dispatch(taskActions.getTasks());
     this.isLoading$ = this.ngRxStore.pipe(select(taskLoadingSelector));
+    this.tasks$ = this.ngRxStore.pipe(select(taskListSelector));
   }
   taskUpdateFormOpenEventCatcher(task: Task): void{
     this.focusedTask.day = task.day;

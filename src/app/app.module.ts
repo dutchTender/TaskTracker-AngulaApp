@@ -20,6 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {taskReducer} from './components/ngRx/reducers/taskReducers';
+import {TaskAppStateEffects} from './components/ngRx/effects/taskEffects';
 
 
 const appRoutes: Routes = [
@@ -53,7 +54,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
     StoreModule.forRoot({appData: taskReducer}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([TaskAppStateEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
