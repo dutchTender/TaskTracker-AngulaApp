@@ -23,10 +23,6 @@ export class HeaderComponent implements OnInit {
   constructor(private UIService: UiService, private appRouter: Router, private ngRxStore: Store) {
   }
   toggleAddBtnEventCatcher(): void {
-    // we need to dispatch either open add form, or close add form
-    // otherwise we will need to implement a toggle mechanism
-    // toggle the add button flag only. false, false on the flags. will produce the close button for add
-    // this.UIService.toggleAddButton();
     this.addToggle = !this.addToggle;
     this.addFormToggle = !this.addFormToggle;
     this.ngRxStore.dispatch(taskActions.toggleNewTaskForm({
@@ -43,6 +39,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.taskHeaderManager$ = this.ngRxStore.pipe(select(uiManagerSelector));
 
+    // rewrite these two subscriptions with a pipe that sets these two values
     this.setAddToggle = this.taskHeaderManager$.subscribe(uiManager =>
       this.addToggle = uiManager.showAddButton
     );
