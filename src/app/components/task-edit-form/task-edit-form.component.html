@@ -1,25 +1,28 @@
 <div *ngIf="showTaskEditForm$ | async as showTaskEditForm">
-  <form  class="add-form" *ngIf="showTaskEditForm" (ngSubmit)="updateTask()">
-    <div class="form-control">
-      <label for="text">Task Description</label>
-      <input type="text" name="text" id="text" placeholder="Update Task text"
-             [(ngModel)]="updatedTask.text"
-             value="{{updatedTask.text}}"/>
-    </div>
-    <div class="form-control">
-      <label for="day">Day & Time</label>
-      <input type="text" name="day"   id="day" placeholder="Update Day & Time"
-             value="{{updatedTask.day}}"
-             [(ngModel)]="updatedTask.day"/>
-    </div>
-    <div class="form-control form-control-check">
-      <label for="reminder">Task Reminder</label>
-      <input type="checkbox" name="reminder" id="reminder"
-             [checked]="updatedTask.reminder.toString() === 'true'"
-             [(ngModel)]="updatedTask.reminder"/>
-    </div>
-    <input class="btn btn-block" type="submit" value="Update Task">
-  </form>
+  <div *ngIf="showTaskEditForm.showEdit">
+    <form  class="add-form" *ngIf="updatedTask$ | async as updatedTask" (ngSubmit)="updateTask()">
+      <div class="form-control">
+        <label for="text">Task Description</label>
+        <input type="text" name="text" id="text" placeholder="Update Task text"
+               [(ngModel)]="updatedTask.text"
+               value="{{updatedTask.text}}"/>
+      </div>
+      <div class="form-control">
+        <label for="day">Day & Time</label>
+        <input type="text" name="day"   id="day" placeholder="Update Day & Time"
+               value="{{updatedTask.day}}"
+               [(ngModel)]="updatedTask.day"/>
+      </div>
+      <div class="form-control form-control-check">
+        <label for="reminder">Task Reminder</label>
+        <input type="checkbox" name="reminder" id="reminder"
+               [checked]="updatedTask.reminder.toString() === 'true'"
+               [(ngModel)]="updatedTask.reminder"/>
+      </div>
+      <input class="btn btn-block" type="submit" value="Update Task">
+    </form>
+  </div>
+
 
 </div>
 

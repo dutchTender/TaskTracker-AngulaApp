@@ -1,21 +1,29 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {Component, Output, EventEmitter, OnInit} from '@angular/core';
 import {Task} from '../interfaces/Task';
 import {Observable} from 'rxjs';
 import {UiService} from '../../services/ui.service';
+import {select, Store} from '@ngrx/store';
+import {focusedTaskSelector, uiManagerSelector} from '../ngRx/selectors/taskSelectors';
+import {UIFlag} from '../interfaces/UIFlag';
 @Component({
   selector: 'app-edit-task-form',
   templateUrl: './task-edit-form.component.html',
   styleUrls: ['./task-edit-form.component.css']
 })
-export class TaskEditFormComponent{
-  showTaskEditForm$: Observable<boolean>;
-  @Input() updatedTask: Task;
+export class TaskEditFormComponent implements OnInit {
+  showTaskEditForm$: Observable<UIFlag>;
+  updatedTask$: Observable<Task>;
   @Output() editTaskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
-  constructor(private UIService: UiService) {
-    this.showTaskEditForm$ = this.UIService.editTaskFormToggle$;
+  constructor(private UIService: UiService, private ngRxStore: Store) {
   }
   updateTask(): void{
-     this.editTaskEmitter.emit(this.updatedTask);
+     // this.editTaskEmitter.emit(this.updatedTask);
+     // this will dispatch an effect
+  }
+
+  ngOnInit(): void {
+    this.updatedTask$ = this.ngRxStore.pipe(select(focusedTaskSelector));
+    this.showTaskEditForm$ = this.ngRxStore.pipe(select(uiManagerSelector));
   }
 
 }

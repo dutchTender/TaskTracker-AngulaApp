@@ -22,5 +22,8 @@ export const taskReducer = createReducer(initialState,
   )),
   on( TaskActions.toggleNewTaskForm, (currentState, taskAction) => (
     {...currentState, uiManager: taskAction.uiManager }
+  )),
+  on( TaskActions.openEditTaskForm, (currentState, taskAction) => (
+    {...currentState, focusedTask: taskAction.focusedTask, uiManager: taskAction.uiManager }
   ))
 );

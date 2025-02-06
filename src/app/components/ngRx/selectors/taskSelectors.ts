@@ -23,3 +23,11 @@ export const uiManagerSelector = createSelector(
   (dataState) => dataState.uiManager
 );
 
+export const focusedTaskSelector = createSelector(
+  taskFeatureSlice,
+  (dataState) => dataState.focusedTask
+);
+
+
+
+

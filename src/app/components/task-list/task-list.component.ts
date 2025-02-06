@@ -6,7 +6,8 @@ import {UiService} from '../../services/ui.service';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {TaskAppStateWrapper} from '../ngRx/state/AppGlobalStateWrapper';
-import {taskErrorSelector, taskListSelector, taskLoadingSelector} from '../ngRx/selectors/taskSelectors';
+import {focusedTaskSelector, taskErrorSelector, taskListSelector, taskLoadingSelector} from '../ngRx/selectors/taskSelectors';
+
 
 @Component({
   selector: 'app-task-list',
@@ -17,25 +18,28 @@ export class TaskListComponent implements OnInit {
   tasks$: Observable<Task[]>;
   isLoading$: Observable<boolean>;
   error$: Observable<string>;
-  focusedTask: Task = {
-    day: '', reminder: null, text: ''
-  };
+  // this will be a selector
+  focusedTask$: Observable<Task>;
 
   private reloadData(): void{
     this.ngRxStore.dispatch(taskActions.getTasks());
     this.isLoading$ = this.ngRxStore.pipe(select(taskLoadingSelector));
     this.tasks$ = this.ngRxStore.pipe(select(taskListSelector));
     this.error$ = this.ngRxStore.pipe(select(taskErrorSelector));
+    this.focusedTask$ = this.ngRxStore.pipe(select(focusedTaskSelector));
   }
   constructor(private tService: TaskService, private UIService: UiService, private ngRxStore: Store<TaskAppStateWrapper>) {
   }
 
   taskUpdateFormOpenEventCatcher(task: Task): void{
-    this.focusedTask.day = task.day;
-    this.focusedTask.text = task.text;
-    this.focusedTask.reminder = task.reminder;
-    this.focusedTask.id = task.id;
-    this.UIService.openEditForm();
+    // focused task will no longer be set this way
+    // we will use a local copy to create task
+    // focused task will be a stream
+    // this.UIService.openEditForm();
+    const tempTask = {...task};
+    console.log(tempTask);
+    this.ngRxStore.dispatch(taskActions.openEditTaskForm(
+      {focusedTask: tempTask, uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true}}));
   }
   taskAddEventCatcher(task: Task): void{
     this.tService.addTaskToService(task).subscribe((addedTask: Task) => (

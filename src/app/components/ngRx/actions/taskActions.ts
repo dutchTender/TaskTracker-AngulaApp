@@ -3,7 +3,7 @@ import {Task} from '../../interfaces/Task';
 import {UIFlag} from '../../interfaces/UIFlag';
 
 export const toggleNewTaskForm = createAction('[Tasks] Toggle New Task Form', props<{uiManager: UIFlag}>());
-export const openEditTaskForm = createAction('[Tasks] Open Edit Task Form', props<{uiManager: UIFlag}>());
+export const openEditTaskForm = createAction('[Tasks] Open Edit Task Form', props<{focusedTask: Task, uiManager: UIFlag}>());
 
 export const getTasks = createAction('[Task] Get task list');
 export const getTasksSuccess = createAction('[Task] Get task success', props<{userTasks: Task[]}>());
