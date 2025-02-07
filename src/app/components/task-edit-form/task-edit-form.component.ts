@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter, OnInit} from '@angular/core';
+import {Component, Output, EventEmitter, OnInit, Input} from '@angular/core';
 import {Task} from '../interfaces/Task';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
@@ -12,11 +12,12 @@ import {UIFlag} from '../interfaces/UIFlag';
 export class TaskEditFormComponent implements OnInit {
   showTaskEditForm$: Observable<UIFlag>;
   updatedTask$: Observable<Task>;
+  @Input() updatedTask: Task;
   @Output() editTaskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
   constructor(private ngRxStore: Store) {
   }
   updateTask(): void{
-     // this.editTaskEmitter.emit(this.updatedTask);
+     this.editTaskEmitter.emit(this.updatedTask);
      // this will dispatch an effect
   }
 

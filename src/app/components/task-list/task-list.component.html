@@ -3,6 +3,7 @@
 </app-add-task-form>
 
 <app-edit-task-form
+  [updatedTask]="focusedTask"
   (editTaskEmitter)="taskUpdateEventCatcher($event)">
 </app-edit-task-form>
 

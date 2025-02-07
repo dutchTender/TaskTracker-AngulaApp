@@ -6,7 +6,7 @@ import {UiService} from '../../services/ui.service';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {TaskAppStateWrapper} from '../ngRx/state/AppGlobalStateWrapper';
-import {focusedTaskSelector, taskErrorSelector, taskListSelector, taskLoadingSelector} from '../ngRx/selectors/taskSelectors';
+import {taskErrorSelector, taskListSelector, taskLoadingSelector} from '../ngRx/selectors/taskSelectors';
 import {delay} from 'rxjs/operators';
 
 
@@ -20,7 +20,7 @@ export class TaskListComponent implements OnInit {
   isLoading$: Observable<boolean>;
   error$: Observable<string>;
   // this will be a selector
-  focusedTask$: Observable<Task>;
+  focusedTask: Task = {day: '', id: 0, reminder: false, text: ''};
 
   private reloadData(): void{
     this.ngRxStore.dispatch(taskActions.getTasks());
@@ -33,9 +33,13 @@ export class TaskListComponent implements OnInit {
     // we will use a local copy to create task
     // focused task will be a stream
     // this.UIService.openEditForm();
-    const tempTask = {...task};
+   // const tempTask = {...task};
+    this.focusedTask.id = task.id;
+    this.focusedTask.reminder = task.reminder;
+    this.focusedTask.text = task.text;
+    this.focusedTask.day = task.day;
     this.ngRxStore.dispatch(taskActions.openEditTaskForm(
-      {focusedTask: tempTask, uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true}}));
+      {focusedTask: task, uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true}}));
   }
   taskAddEventCatcher(task: Task): void{
     this.ngRxStore.dispatch(taskActions.createTask(
@@ -59,7 +63,6 @@ export class TaskListComponent implements OnInit {
     this.isLoading$ = this.ngRxStore.pipe(select(taskLoadingSelector));
     this.tasks$ = this.ngRxStore.pipe(select(taskListSelector));
     this.error$ = this.ngRxStore.pipe(select(taskErrorSelector));
-    this.focusedTask$ = this.ngRxStore.pipe(select(focusedTaskSelector));
     this.reloadData();
   }
 }

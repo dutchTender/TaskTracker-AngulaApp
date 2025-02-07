@@ -2,9 +2,9 @@
   "tasks": [
     {
       "day": "May 11th  at 3:30 PM",
-      "reminder": false,
-      "text": "Grocery Shopping at Asian Market",
-      "id": 3
+      "id": 3,
+      "reminder": true,
+      "text": "Grocery Shopping at Asian Market"
     },
     {
       "day": "every morning at 7am to 11am",
@@ -20,9 +20,9 @@
     },
     {
       "day": "tommorow afternoon",
-      "reminder": false,
-      "text": "angular job interview ",
-      "id": 6
+      "id": 6,
+      "reminder": true,
+      "text": "angular job interview "
     },
     {
       "day": "next friday ",
@@ -32,9 +32,9 @@
     },
     {
       "day": "sfsdf",
-      "reminder": true,
-      "text": "test123",
-      "id": 8
+      "id": 8,
+      "reminder": false,
+      "text": "test123"
     }
   ]
 }
