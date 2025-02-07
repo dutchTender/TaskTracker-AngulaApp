@@ -25,13 +25,15 @@ export class HeaderComponent implements OnInit {
     this.addToggle = !this.addToggle;
     this.addFormToggle = !this.addFormToggle;
     this.ngRxStore.dispatch(taskActions.toggleNewTaskForm({
+      focusedTask: null,
       uiManager: {showAddButton: this.addToggle, showAddTaskForm: this.addFormToggle, showEdit: false } }));
   }
   closeEditBtnEventCatcher(): void{
     // here we simply need to dispatch the close edit form action
     // this.UIService.closeEditForm();
     this.ngRxStore.dispatch(taskActions.closeEditTaskForm({
-      focusedTask: null, uiManager: {showAddButton: true, showAddTaskForm: false, showEdit: false } }));
+      focusedTask: null,
+      uiManager: {showAddButton: true, showAddTaskForm: false, showEdit: false } }));
   }
   hasRoute(route: string): boolean{
     return this.appRouter.url === route;

@@ -37,15 +37,12 @@ export class TaskListComponent implements OnInit {
     // focused task will be a stream
     // this.UIService.openEditForm();
     const tempTask = {...task};
-    console.log(tempTask);
     this.ngRxStore.dispatch(taskActions.openEditTaskForm(
       {focusedTask: tempTask, uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true}}));
   }
   taskAddEventCatcher(task: Task): void{
-    this.tService.addTaskToService(task).subscribe((addedTask: Task) => (
-      this.reloadData()
-      // new logic will get the returned data set to focused data and load the edit params
-    ));
+    this.ngRxStore.dispatch(taskActions.createTask(
+      {focusedTask: task }));
   }
   taskUpdateEventCatcher(task: Task): void{
     this.tService.updateTaskToService(task).subscribe((addedTask: Task) => (

@@ -4,6 +4,7 @@ import {TaskService} from '../../../services/task.service';
 import * as taskActions from '../actions/taskActions';
 import {mergeMap, map, catchError, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
+import {placeholdersToParams} from '@angular/compiler/src/render3/view/i18n/util';
 
 @Injectable()
 export class TaskAppStateEffects{
@@ -16,6 +17,19 @@ export class TaskAppStateEffects{
         return this.taskService.tasksData$.pipe(
           map((userTasks) => taskActions.getTasksSuccess({userTasks})),
           catchError( (taskErrors) => of(taskActions.getTasksFailure({taskErrors})))
+        );
+      })
+    )
+  );
+
+
+  createTasks$ = createEffect( () => this.taskActions$.pipe(
+      tap(action => console.log(action.type)),
+      ofType(taskActions.createTask),
+      mergeMap( (params) => {
+        return this.taskService.addTaskToService(params.focusedTask).pipe(
+          map((newTask) => taskActions.createTaskSuccess({newTask})),
+          catchError( (taskErrors) => of(taskActions.createTaskFailure({taskErrors})))
         );
       })
     )
