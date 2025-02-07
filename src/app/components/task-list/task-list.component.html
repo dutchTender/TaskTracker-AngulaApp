@@ -9,8 +9,6 @@
 
 
 <div *ngIf="isLoading$ | async">Loading tasks for user ....</div>
-
-
 <div *ngIf="tasks$ | async as tasks">
   <app-task-item
     *ngFor="let taskItem of tasks"

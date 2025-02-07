@@ -6,7 +6,7 @@ import {UiService} from '../../services/ui.service';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {TaskAppStateWrapper} from '../ngRx/state/AppGlobalStateWrapper';
-import {taskErrorSelector, taskListSelector, taskLoadingSelector} from '../ngRx/selectors/taskSelectors';
+import {focusedTaskSelector, taskErrorSelector, taskListSelector, taskLoadingSelector} from '../ngRx/selectors/taskSelectors';
 import {delay} from 'rxjs/operators';
 
 
