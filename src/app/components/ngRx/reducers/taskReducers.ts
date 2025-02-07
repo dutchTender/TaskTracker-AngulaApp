@@ -24,15 +24,17 @@ export const taskReducer = createReducer(initialState,
   )),
   on( TaskActions.toggleNewTaskForm, (currentState, taskAction) => (
     {...currentState,
-      focusedTask: taskAction.focusedTask , uiManager: taskAction.uiManager }
+      uiManager: taskAction.uiManager }
   )),
   on( TaskActions.openEditTaskForm, (currentState, taskAction) => (
     {...currentState,
-      focusedTask: taskAction.focusedTask, uiManager: taskAction.uiManager }
+      focusedTask: taskAction.focusedTask,
+      uiManager: taskAction.uiManager }
   )),
   on( TaskActions.closeEditTaskForm, (currentState, taskAction) => (
     {...currentState,
-      focusedTask: taskAction.focusedTask, uiManager: taskAction.uiManager }
+      focusedTask: taskAction.focusedTask,
+      uiManager: taskAction.uiManager }
   )),
   on( TaskActions.createTask, (currentState, taskAction) => (
     {...currentState,
@@ -40,11 +42,13 @@ export const taskReducer = createReducer(initialState,
   )),
   on( TaskActions.createTaskSuccess, (currentState, taskAction) => (
     {...currentState,
-      focusedTask: taskAction.newTask,
-      uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true} }
+      uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true},
+      taskList: [...currentState.taskList, currentState.focusedTask],
+    }
   )),
   on( TaskActions.createTaskFailure, (currentState, taskAction) => (
     {...currentState,
-      error: taskAction.taskErrors,  uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true} }
+      error: taskAction.taskErrors,
+      uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true} }
   ))
 );

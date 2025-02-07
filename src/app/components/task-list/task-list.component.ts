@@ -39,13 +39,11 @@ export class TaskListComponent implements OnInit {
     this.focusedTask.text = task.text;
     this.focusedTask.day = task.day;
     this.ngRxStore.dispatch(taskActions.openEditTaskForm(
-      {focusedTask: task, uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true}}));
+      {focusedTask: this.focusedTask, uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true}}));
   }
   taskAddEventCatcher(task: Task): void{
     this.ngRxStore.dispatch(taskActions.createTask(
       {focusedTask: task }));
-    delay(1500);
-    this.reloadData();
   }
   taskUpdateEventCatcher(task: Task): void{
     this.tService.updateTaskToService(task).subscribe((addedTask: Task) => (

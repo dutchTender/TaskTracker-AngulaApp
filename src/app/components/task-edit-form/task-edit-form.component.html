@@ -1,6 +1,6 @@
 <div *ngIf="showTaskEditForm$ | async as showTaskEditForm">
   <div *ngIf="showTaskEditForm.showEdit">
-    <form  class="add-form" *ngIf="updatedTask" (ngSubmit)="updateTask()">
+    <form  class="add-form" *ngIf="updatedTask$ | async as updatedTask" (ngSubmit)="updateTask()">
       <div class="form-control">
         <label for="text">Task Description</label>
         <input type="text" name="text" id="text" placeholder="Update Task text"
