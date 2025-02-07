@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {TaskAppStateWrapper} from '../ngRx/state/AppGlobalStateWrapper';
 import {focusedTaskSelector, taskErrorSelector, taskListSelector, taskLoadingSelector} from '../ngRx/selectors/taskSelectors';
+import {delay} from 'rxjs/operators';
 
 
 @Component({
@@ -23,10 +24,6 @@ export class TaskListComponent implements OnInit {
 
   private reloadData(): void{
     this.ngRxStore.dispatch(taskActions.getTasks());
-    this.isLoading$ = this.ngRxStore.pipe(select(taskLoadingSelector));
-    this.tasks$ = this.ngRxStore.pipe(select(taskListSelector));
-    this.error$ = this.ngRxStore.pipe(select(taskErrorSelector));
-    this.focusedTask$ = this.ngRxStore.pipe(select(focusedTaskSelector));
   }
   constructor(private tService: TaskService, private UIService: UiService, private ngRxStore: Store<TaskAppStateWrapper>) {
   }
@@ -43,6 +40,8 @@ export class TaskListComponent implements OnInit {
   taskAddEventCatcher(task: Task): void{
     this.ngRxStore.dispatch(taskActions.createTask(
       {focusedTask: task }));
+    delay(1500);
+    this.reloadData();
   }
   taskUpdateEventCatcher(task: Task): void{
     this.tService.updateTaskToService(task).subscribe((addedTask: Task) => (
@@ -57,6 +56,10 @@ export class TaskListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading$ = this.ngRxStore.pipe(select(taskLoadingSelector));
+    this.tasks$ = this.ngRxStore.pipe(select(taskListSelector));
+    this.error$ = this.ngRxStore.pipe(select(taskErrorSelector));
+    this.focusedTask$ = this.ngRxStore.pipe(select(focusedTaskSelector));
     this.reloadData();
   }
 }
