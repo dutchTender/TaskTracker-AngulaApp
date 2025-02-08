@@ -2,17 +2,24 @@
   <h2>{{title}}</h2>
   <div *ngIf="taskHeaderManager$ | async as headerButton">
     <app-button
-      *ngIf="hasRoute('/tasks') && !headerButton.showEdit"
-      buttonColor="{{headerButton.showAddButton ? 'Green': 'Red'}}"
-      buttonText="{{headerButton.showAddButton? 'New Task': 'Close New Task'}}"
-      (btnClickedEmitter)="toggleAddBtnEventCatcher()">
+      *ngIf="hasRoute('/tasks') && !headerButton.showEdit && headerButton.showAddButton"
+      buttonColor="Green"
+      buttonText="New Task"
+      (btnClickedEmitter)="OpenNewTaskFormEventCatcher()">
+    </app-button>
+
+    <app-button
+      *ngIf="hasRoute('/tasks') && !headerButton.showEdit && !headerButton.showAddButton"
+      buttonColor="Red"
+      buttonText="Close New Task"
+      (btnClickedEmitter)="closeNewTaskFormEventCatcher()">
     </app-button>
 
     <app-button
       *ngIf="hasRoute('/tasks') && headerButton.showEdit"
       buttonColor="red"
       buttonText="Close Edit Task"
-      (btnClickedEmitter)="closeEditBtnEventCatcher()">
+      (btnClickedEmitter)="closeEditFormEventCatcher()">
     </app-button>
   </div>
 

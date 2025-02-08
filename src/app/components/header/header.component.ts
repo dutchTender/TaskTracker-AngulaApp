@@ -16,21 +16,20 @@ export class HeaderComponent implements OnInit {
 
   title = 'Task Tracker';
   taskHeaderManager$: Observable<UIFlag>; // this will be reset to ngRx selector
-  addToggle = true;
-  addFormToggle = false;
-
   constructor(private appRouter: Router, private ngRxStore: Store) {
   }
-  toggleAddBtnEventCatcher(): void {
-    this.addToggle = !this.addToggle;
-    this.addFormToggle = !this.addFormToggle;
+
+  OpenNewTaskFormEventCatcher(): void {
     this.ngRxStore.dispatch(taskActions.toggleNewTaskForm({
       focusedTask: null,
-      uiManager: {showAddButton: this.addToggle, showAddTaskForm: this.addFormToggle, showEdit: false } }));
+      uiManager: {showAddButton: false, showAddTaskForm: true, showEdit: false } }));
   }
-  closeEditBtnEventCatcher(): void{
-    // here we simply need to dispatch the close edit form action
-    // this.UIService.closeEditForm();
+  closeNewTaskFormEventCatcher(): void {
+    this.ngRxStore.dispatch(taskActions.toggleNewTaskForm({
+      focusedTask: null,
+      uiManager: {showAddButton: true, showAddTaskForm: false, showEdit: false } }));
+  }
+  closeEditFormEventCatcher(): void{
     this.ngRxStore.dispatch(taskActions.closeEditTaskForm({
       focusedTask: null,
       uiManager: {showAddButton: true, showAddTaskForm: false, showEdit: false } }));
@@ -41,10 +40,5 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskHeaderManager$ = this.ngRxStore.pipe(select(uiManagerSelector));
-    this.taskHeaderManager$.pipe(map(taskHeaderManager => {
-      this.addToggle = taskHeaderManager.showAddButton;
-      this.addFormToggle = taskHeaderManager.showAddTaskForm;
-    }));
-
   }
 }

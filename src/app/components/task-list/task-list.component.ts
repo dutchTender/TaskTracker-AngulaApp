@@ -2,12 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Task} from '../interfaces/Task';
 import * as taskActions from '../ngRx/actions/taskActions';
 import {TaskService} from '../../services/task.service';
-import {UiService} from '../../services/ui.service';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {TaskAppStateWrapper} from '../ngRx/state/AppGlobalStateWrapper';
-import {focusedTaskSelector, taskErrorSelector, taskListSelector, taskLoadingSelector} from '../ngRx/selectors/taskSelectors';
-import {delay} from 'rxjs/operators';
+import {taskErrorSelector, taskListSelector, taskLoadingSelector} from '../ngRx/selectors/taskSelectors';
 
 
 @Component({
@@ -25,15 +23,16 @@ export class TaskListComponent implements OnInit {
   private reloadData(): void{
     this.ngRxStore.dispatch(taskActions.getTasks());
   }
-  constructor(private tService: TaskService, private UIService: UiService, private ngRxStore: Store<TaskAppStateWrapper>) {
+  constructor(private tService: TaskService, private ngRxStore: Store<TaskAppStateWrapper>) {
+  }
+  ngOnInit(): void {
+    this.isLoading$ = this.ngRxStore.pipe(select(taskLoadingSelector));
+    this.tasks$ = this.ngRxStore.pipe(select(taskListSelector));
+    this.error$ = this.ngRxStore.pipe(select(taskErrorSelector));
+    this.reloadData();
   }
 
   taskUpdateFormOpenEventCatcher(task: Task): void{
-    // focused task will no longer be set this way
-    // we will use a local copy to create task
-    // focused task will be a stream
-    // this.UIService.openEditForm();
-   // const tempTask = {...task};
     this.focusedTask.id = task.id;
     this.focusedTask.reminder = task.reminder;
     this.focusedTask.text = task.text;
@@ -55,11 +54,5 @@ export class TaskListComponent implements OnInit {
     this.tService.removeTaskFromService(task).subscribe((removedTask: Task) => (
       this.reloadData()
     ));
-  }
-  ngOnInit(): void {
-    this.isLoading$ = this.ngRxStore.pipe(select(taskLoadingSelector));
-    this.tasks$ = this.ngRxStore.pipe(select(taskListSelector));
-    this.error$ = this.ngRxStore.pipe(select(taskErrorSelector));
-    this.reloadData();
   }
 }
