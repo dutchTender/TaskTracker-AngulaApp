@@ -20,7 +20,7 @@ export class TaskListComponent implements OnInit {
   isLoading$: Observable<boolean>;
   error$: Observable<string>;
   // this will be a selector
-  focusedTask: Task = {day: '', id: 0, reminder: false, text: ''};
+  focusedTask: Task = {day: '', reminder: false, text: ''};
 
   private reloadData(): void{
     this.ngRxStore.dispatch(taskActions.getTasks());
@@ -56,7 +56,6 @@ export class TaskListComponent implements OnInit {
       this.reloadData()
     ));
   }
-
   ngOnInit(): void {
     this.isLoading$ = this.ngRxStore.pipe(select(taskLoadingSelector));
     this.tasks$ = this.ngRxStore.pipe(select(taskListSelector));
