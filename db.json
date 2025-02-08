@@ -31,15 +31,10 @@
       "id": 7
     },
     {
-      "day": "afag a ag ",
+      "day": "sergfsg",
+      "reminder": true,
       "text": "test123",
       "id": 8
-    },
-    {
-      "day": "sfsdf",
-      "reminder": true,
-      "text": "sdfsdf",
-      "id": 9
     }
   ]
 }
