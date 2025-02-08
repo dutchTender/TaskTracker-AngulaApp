@@ -44,9 +44,8 @@ export class TaskListComponent implements OnInit {
       {focusedTask: task }));
   }
   taskUpdateEventCatcher(task: Task): void{
-    this.tService.updateTaskToService(task).subscribe((addedTask: Task) => (
-      this.reloadData()
-    ));
+    this.ngRxStore.dispatch(taskActions.updateTask(
+      {focusedTask: task }));
   }
   taskDeleteEventCatcher(task: Task): void{
     /* call delete service, then update component rendering via updating component property this.tasks */

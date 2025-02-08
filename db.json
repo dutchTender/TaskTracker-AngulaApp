@@ -29,12 +29,6 @@
       "reminder": true,
       "text": "on site interview with SEC",
       "id": 7
-    },
-    {
-      "day": "sfsdf",
-      "id": 8,
-      "reminder": true,
-      "text": "test123"
     }
   ]
 }
