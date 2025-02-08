@@ -32,9 +32,9 @@
     },
     {
       "day": "sfsdf",
-      "reminder": true,
-      "text": "test123",
-      "id": 8
+      "id": 8,
+      "reminder": false,
+      "text": "test123"
     }
   ]
 }

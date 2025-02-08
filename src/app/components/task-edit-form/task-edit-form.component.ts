@@ -17,8 +17,8 @@ export class TaskEditFormComponent implements OnInit {
   @Output() editTaskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
   constructor(private ngRxStore: Store) {
   }
-  updateTask(): void{
-     // this.editTaskEmitter.emit(this.updatedTask);
+  updateTask(updatedTask: Task): void{
+     this.editTaskEmitter.emit(updatedTask);
      // this will dispatch an effect
   }
 
