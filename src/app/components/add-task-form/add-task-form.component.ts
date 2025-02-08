@@ -35,10 +35,6 @@ export class AddTaskFormComponent implements OnInit {
     this.taskText = '';
     this.taskDay = '';
     this.taskReminderOption = false;
-
-    this.ngRxStore.dispatch(taskActions.toggleNewTaskForm({
-      focusedTask: null,
-      uiManager: {showAddButton: false, showAddTaskForm: true, showEdit: false} }));
   }
 
   ngOnInit(): void {

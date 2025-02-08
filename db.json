@@ -35,6 +35,12 @@
       "reminder": true,
       "text": "test123",
       "id": 8
+    },
+    {
+      "day": "sdfs",
+      "reminder": true,
+      "text": "cfbcb",
+      "id": 9
     }
   ]
 }
