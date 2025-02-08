@@ -33,7 +33,6 @@ export const taskReducer = createReducer(initialState,
   )),
   on( TaskActions.closeEditTaskForm, (currentState, taskAction) => (
     {...currentState,
-      focusedTask: taskAction.focusedTask,
       uiManager: taskAction.uiManager }
   )),
   on( TaskActions.createTask, (currentState, taskAction) => (

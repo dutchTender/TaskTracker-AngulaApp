@@ -1,5 +1,6 @@
 import {createSelector} from '@ngrx/store';
 import {TaskAppStateWrapper} from '../state/AppGlobalStateWrapper';
+import {Task} from '../../interfaces/Task';
 
 export const taskFeatureSlice = (dataState: TaskAppStateWrapper) =>  dataState.appData;
 
@@ -25,7 +26,14 @@ export const uiManagerSelector = createSelector(
 
 export const focusedTaskSelector = createSelector(
   taskFeatureSlice,
-  (dataState) => dataState.focusedTask
+  (dataState): Task => {
+        return {
+          day: dataState.focusedTask.day,
+          id: dataState.focusedTask.id,
+          reminder: dataState.focusedTask.reminder,
+          text: dataState.focusedTask.text
+        };
+  }
 );
 
 

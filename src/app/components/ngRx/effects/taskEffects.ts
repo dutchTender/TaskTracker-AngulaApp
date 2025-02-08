@@ -4,14 +4,14 @@ import {TaskService} from '../../../services/task.service';
 import * as taskActions from '../actions/taskActions';
 import {mergeMap, map, catchError, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
-import {placeholdersToParams} from '@angular/compiler/src/render3/view/i18n/util';
+
 
 @Injectable()
 export class TaskAppStateEffects{
   constructor(private taskService: TaskService, private taskActions$: Actions) {
   }
   getTasks$ = createEffect( () => this.taskActions$.pipe(
-      tap(action => console.log(action.type)),
+    tap(action => console.log(action.type)),
       ofType(taskActions.getTasks),
       mergeMap( () => {
         return this.taskService.tasksData$.pipe(
@@ -22,9 +22,7 @@ export class TaskAppStateEffects{
     )
   );
 
-
   createTasks$ = createEffect( () => this.taskActions$.pipe(
-      tap(action => console.log(action.type)),
       ofType(taskActions.createTask),
       mergeMap( (params) => {
         return this.taskService.addTaskToService(params.focusedTask).pipe(

@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter, OnInit, Input} from '@angular/core';
+import {Component, Output, EventEmitter, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Task} from '../interfaces/Task';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
@@ -7,7 +7,8 @@ import {UIFlag} from '../interfaces/UIFlag';
 @Component({
   selector: 'app-edit-task-form',
   templateUrl: './task-edit-form.component.html',
-  styleUrls: ['./task-edit-form.component.css']
+  styleUrls: ['./task-edit-form.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskEditFormComponent implements OnInit {
   showTaskEditForm$: Observable<UIFlag>;
