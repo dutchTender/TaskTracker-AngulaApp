@@ -15,7 +15,7 @@
     {
       "day": "every day after school aegws",
       "id": 5,
-      "reminder": false,
+      "reminder": true,
       "text": "basketball practice at community center"
     },
     {
@@ -33,7 +33,7 @@
     {
       "day": "sfsdf",
       "id": 8,
-      "reminder": false,
+      "reminder": true,
       "text": "test123"
     }
   ]

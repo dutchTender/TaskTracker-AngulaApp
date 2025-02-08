@@ -3,13 +3,13 @@ import {createReducer, on} from '@ngrx/store';
 import * as TaskActions from '../actions/taskActions';
 
 export const initialState: TaskAppState = {
-  error: null, focusedTask: {text: '', reminder: false, day: '' },
-  taskList: [], uiManager: {showAddButton: true, showAddTaskForm: false, showEdit: false},
+  error: null,
+  focusedTask: {text: '', reminder: false, day: '' },
+  taskList: [],
+  uiManager: {showAddButton: true, showAddTaskForm: false, showEdit: false},
   isLoading: false
 };
 
-// @ts-ignore
-// @ts-ignore
 export const taskReducer = createReducer(initialState,
   on( TaskActions.getTasks, (currentState) => (
     {...currentState, isLoading: true }
@@ -41,11 +41,28 @@ export const taskReducer = createReducer(initialState,
   )),
   on( TaskActions.createTaskSuccess, (currentState, taskAction) => (
     {...currentState,
-      uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true},
       taskList: [...currentState.taskList, taskAction.newTask],
+      uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true}
     }
   )),
   on( TaskActions.createTaskFailure, (currentState, taskAction) => (
+    {...currentState,
+      error: taskAction.taskErrors,
+      uiManager: {showAddButton: false, showAddTaskForm: true, showEdit: false} }
+  )),
+  on( TaskActions.updateTask, (currentState, taskAction) => (
+    {...currentState,
+      focusedTask: taskAction.focusedTask}
+  )),
+  on( TaskActions.updateTaskSuccess, (currentState, taskAction) => (
+    {...currentState,
+      uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true},
+      taskList: currentState.taskList.map(
+        (taskElement, index) => taskElement.id === taskAction.updatedTask.id ? taskAction.updatedTask : taskElement
+      )
+    }
+  )),
+  on( TaskActions.updateTaskFailure, (currentState, taskAction) => (
     {...currentState,
       error: taskAction.taskErrors,
       uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true} }

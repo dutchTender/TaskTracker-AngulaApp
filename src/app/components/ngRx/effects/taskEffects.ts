@@ -32,6 +32,17 @@ export class TaskAppStateEffects{
       })
     )
   );
+
+  updateTasks$ = createEffect( () => this.taskActions$.pipe(
+      ofType(taskActions.updateTask),
+      mergeMap( (params) => {
+        return this.taskService.updateTaskToService(params.focusedTask).pipe(
+          map((updatedTask) => taskActions.updateTaskSuccess({updatedTask})),
+          catchError( (taskErrors) => of(taskActions.updateTaskFailure({taskErrors})))
+        );
+      })
+    )
+  );
 }
 
 

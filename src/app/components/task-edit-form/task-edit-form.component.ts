@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {focusedTaskSelector, uiManagerSelector} from '../ngRx/selectors/taskSelectors';
 import {UIFlag} from '../interfaces/UIFlag';
+
 @Component({
   selector: 'app-edit-task-form',
   templateUrl: './task-edit-form.component.html',
