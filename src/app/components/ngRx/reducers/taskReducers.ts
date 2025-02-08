@@ -42,6 +42,7 @@ export const taskReducer = createReducer(initialState,
   on( TaskActions.createTaskSuccess, (currentState, taskAction) => (
     {...currentState,
       taskList: [...currentState.taskList, taskAction.newTask],
+      focusedTask: taskAction.newTask,
       uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true}
     }
   )),

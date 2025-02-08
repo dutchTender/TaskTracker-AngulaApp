@@ -11,7 +11,7 @@ export class TaskAppStateEffects{
   constructor(private taskService: TaskService, private taskActions$: Actions) {
   }
   getTasks$ = createEffect( () => this.taskActions$.pipe(
-    tap(action => console.log(action.type)),
+      tap(action => console.log(action.type)),
       ofType(taskActions.getTasks),
       mergeMap( () => {
         return this.taskService.tasksData$.pipe(
