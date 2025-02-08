@@ -13,9 +13,7 @@ import * as taskActions from '../ngRx/actions/taskActions';
 })
 export class AddTaskFormComponent implements OnInit {
   showAddTaskForm$: Observable<UIFlag>;
-  newTask: Task = {
-    day: '', reminder: false, text: ''
-  };
+
   /* ---------------------------------------*/
   /* form fields */
   /* ---------------------------------------*/
@@ -27,10 +25,13 @@ export class AddTaskFormComponent implements OnInit {
   constructor(private ngRxStore: Store) {
   }
   createNewTask(): void {
-    this.newTask.text = this.taskText;
-    this.newTask.day = this.taskDay;
-    this.newTask.reminder = this.taskReminderOption;
-    this.addTaskEmitter.emit(this.newTask);
+    const newTask: Task = {
+      day: '', reminder: false, text: ''
+    };
+    newTask.text = this.taskText;
+    newTask.day = this.taskDay;
+    newTask.reminder = this.taskReminderOption;
+    this.addTaskEmitter.emit(newTask);
     this.taskText = '';
     this.taskDay = '';
     this.taskReminderOption = false;

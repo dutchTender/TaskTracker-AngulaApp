@@ -32,9 +32,14 @@
     },
     {
       "day": "afag a ag ",
-      "reminder": true,
       "text": "test123",
       "id": 8
+    },
+    {
+      "day": "sfsdf",
+      "reminder": true,
+      "text": "sdfsdf",
+      "id": 9
     }
   ]
 }
