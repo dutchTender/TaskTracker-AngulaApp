@@ -35,12 +35,6 @@
       "reminder": true,
       "text": "test123",
       "id": 8
-    },
-    {
-      "day": "e46te",
-      "reminder": false,
-      "text": "cfbcb",
-      "id": 9
     }
   ]
 }
