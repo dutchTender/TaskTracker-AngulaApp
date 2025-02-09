@@ -20,7 +20,6 @@ export class TaskEditFormComponent implements OnInit {
   }
   updateTask(updatedTask: Task): void{
      this.editTaskEmitter.emit(updatedTask);
-     // this will dispatch an effect
   }
 
   ngOnInit(): void {

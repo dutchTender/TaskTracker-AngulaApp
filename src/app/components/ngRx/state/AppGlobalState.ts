@@ -6,5 +6,6 @@ export interface TaskAppState {
   focusedTask: Task;
   taskList: Task[];
   isLoading: boolean;
+  deletedTask: Task;
   error: string | null;
 }

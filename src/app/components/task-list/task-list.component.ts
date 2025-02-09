@@ -49,8 +49,7 @@ export class TaskListComponent implements OnInit {
   }
   taskDeleteEventCatcher(task: Task): void{
     /* call delete service, then update component rendering via updating component property this.tasks */
-    this.tService.removeTaskFromService(task).subscribe((removedTask: Task) => (
-      this.reloadData()
-    ));
+    this.ngRxStore.dispatch(taskActions.deleteTask(
+      {focusedTask: task }));
   }
 }

@@ -18,8 +18,8 @@ export const updateTask = createAction('[Task] Update task', props<{focusedTask:
 export const updateTaskSuccess = createAction('[Task] Update task success', props<{updatedTask: Task}>());
 export const updateTaskFailure = createAction('[Task] Update task failure', props<{taskErrors: string}>());
 
-export const deleteTask = createAction('[Task] Delete task');
-export const deleteTaskSuccess = createAction('[Task] Delete task success');
+export const deleteTask = createAction('[Task] Delete task', props<{focusedTask: Task}>());
+export const deleteTaskSuccess = createAction('[Task] Delete task success', props<{deletedTask: Task}>());
 export const deleteTaskFailure = createAction('[Task] Delete task failure', props<{taskErrors: string}>());
 
 

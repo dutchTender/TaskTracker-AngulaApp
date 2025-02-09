@@ -13,28 +13,10 @@
       "id": 4
     },
     {
-      "day": "every day after school aegws",
-      "id": 5,
+      "day": "sfsdf",
       "reminder": true,
-      "text": "basketball practice at community center"
-    },
-    {
-      "day": "tommorow afternoon",
-      "id": 6,
-      "reminder": true,
-      "text": "angular job interview "
-    },
-    {
-      "day": "next friday ",
-      "reminder": true,
-      "text": "on site interview with SEC",
-      "id": 7
-    },
-    {
-      "day": "rgerg",
-      "id": 8,
-      "reminder": false,
-      "text": "test123ye5yey"
+      "text": "test123",
+      "id": 6
     }
   ]
 }

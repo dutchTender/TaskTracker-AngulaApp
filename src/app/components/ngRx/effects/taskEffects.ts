@@ -43,6 +43,17 @@ export class TaskAppStateEffects{
       })
     )
   );
+
+  deleteTasks$ = createEffect( () => this.taskActions$.pipe(
+      ofType(taskActions.deleteTask),
+      mergeMap( (params) => {
+        return this.taskService.removeTaskFromService(params.focusedTask).pipe(
+          map((deletedTask) => taskActions.deleteTaskSuccess({deletedTask})),
+          catchError( (taskErrors) => of(taskActions.updateTaskFailure({taskErrors})))
+        );
+      })
+    )
+  );
 }
 
 
