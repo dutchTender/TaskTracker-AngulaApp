@@ -72,7 +72,7 @@ export const taskReducer = createReducer(initialState,
       ...currentState,
       uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true},
       taskList: currentState.taskList.map(
-        (taskElement, index) => taskElement.id === taskAction.updatedTask.id ? taskAction.updatedTask : taskElement
+        (taskElement) => taskElement.id === taskAction.updatedTask.id ? taskAction.updatedTask : taskElement
       )
     }
   )),

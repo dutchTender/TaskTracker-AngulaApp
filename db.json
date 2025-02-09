@@ -13,10 +13,16 @@
       "id": 4
     },
     {
+      "day": "afag a ag ",
+      "id": 7,
+      "reminder": true,
+      "text": "qweqwe "
+    },
+    {
       "day": "sfsdf",
       "reminder": true,
       "text": "test123",
-      "id": 6
+      "id": 8
     }
   ]
 }

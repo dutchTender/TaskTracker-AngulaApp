@@ -14,6 +14,7 @@ export const getTasksFailure = createAction('[Task] Get task success', props<{ta
 export const createTask = createAction('[Task] Create task',  props<{focusedTask: Task}>());
 export const createTaskSuccess = createAction('[Task] Create task success', props<{newTask: Task}>());
 export const createTaskFailure = createAction('[Task] Create task failure', props<{taskErrors: string}>());
+
 export const updateTask = createAction('[Task] Update task', props<{focusedTask: Task}>());
 export const updateTaskSuccess = createAction('[Task] Update task success', props<{updatedTask: Task}>());
 export const updateTaskFailure = createAction('[Task] Update task failure', props<{taskErrors: string}>());

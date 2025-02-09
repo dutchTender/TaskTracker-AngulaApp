@@ -5,7 +5,6 @@ import {Router} from '@angular/router';
 import {UIFlag} from '../interfaces/UIFlag';
 import {select, Store} from '@ngrx/store';
 import * as taskActions from '../ngRx/actions/taskActions';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
