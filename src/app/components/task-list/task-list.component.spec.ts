@@ -17,7 +17,8 @@ describe('TaskListComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
+/* we need to verify that a injected mock list of tasks is rendered for the component
+ we will check for the nth element to see if it exists in the html*/
   it('should create', () => {
     expect(component).toBeTruthy();
   });
