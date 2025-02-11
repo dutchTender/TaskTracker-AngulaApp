@@ -64,8 +64,12 @@ export const taskReducer = createReducer(initialState,
       taskList: [...currentState.taskList, taskAction.newTask],
       focusedTask: taskAction.newTask,
       uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true}*/
-      return taskAdapter.addOne(taskAction.newTask, {...currentState,  focusedTask: taskAction.newTask,
-        uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true} });
+      return taskAdapter.addOne(
+        taskAction.newTask, {
+          ...currentState,
+          focusedTask: taskAction.newTask,
+          uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true}
+        });
     }
   ),
   on( TaskActions.createTaskFailure, (currentState, taskAction) => (
@@ -81,15 +85,25 @@ export const taskReducer = createReducer(initialState,
       focusedTask: taskAction.focusedTask
     }
   )),
-  on( TaskActions.updateTaskSuccess, (currentState, taskAction) => (
+  on( TaskActions.updateTaskSuccess, (currentState, taskAction) =>
     {
-      ...currentState,
+     /*...currentState,
       uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true},
       taskList: currentState.taskList.map(
         (taskElement) => taskElement.id === taskAction.updatedTask.id ? taskAction.updatedTask : taskElement
-      )
+      )*/
+      // tslint:disable-next-line:max-line-length
+      return taskAdapter.updateOne({
+                id: taskAction.updatedTask.id,
+                changes: taskAction.updatedTask
+              },
+        {
+                ...currentState,
+                focusedTask: taskAction.updatedTask,
+                uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true}
+               });
     }
-  )),
+  ),
   on( TaskActions.updateTaskFailure, (currentState, taskAction) => (
     {
       ...currentState,
