@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Task} from '../interfaces/Task';
+import {Task} from '../ngRx/state/Task';
 import * as taskActions from '../ngRx/actions/taskActions';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {FontAwesomeTestingModule} from '@fortawesome/angular-fontawesome/testing';
 import { TaskItemComponent } from './task-item.component';
 import { Component } from '@angular/core';
-import {Task} from '../interfaces/Task';
+import {Task} from '../ngRx/state/Task';
 
 
 /*below component is used to mock the incoming task value that is injected into this component*/

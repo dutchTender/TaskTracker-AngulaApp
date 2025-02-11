@@ -1,7 +1,7 @@
 import {TaskAppState} from '../state/AppGlobalState';
 import {createReducer, on} from '@ngrx/store';
 import * as TaskActions from '../actions/taskActions';
-import {taskStoreAdapter} from '../../interfaces/Task';
+import {taskStoreAdapter} from '../state/Task';
 
 
 export const initialState: TaskAppState = taskStoreAdapter.getInitialState({

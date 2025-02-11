@@ -1,5 +1,5 @@
 import {createAction, props} from '@ngrx/store';
-import {Task} from '../../interfaces/Task';
+import {Task} from '../state/Task';
 import {UIFlag} from '../../interfaces/UIFlag';
 
 export const toggleNewTaskForm = createAction('[Tasks] Toggle New Task Form', props<{focusedTask: Task, uiManager: UIFlag}>());

@@ -1,4 +1,4 @@
-import {Task} from '../../interfaces/Task';
+import {Task} from './Task';
 import {UIFlag} from '../../interfaces/UIFlag';
 import {EntityState} from '@ngrx/entity';
 

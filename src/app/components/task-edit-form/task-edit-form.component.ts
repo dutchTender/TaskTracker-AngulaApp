@@ -1,5 +1,5 @@
 import {Component, Output, EventEmitter, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {Task} from '../interfaces/Task';
+import {Task} from '../ngRx/state/Task';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {focusedTaskSelector, uiManagerSelector} from '../ngRx/selectors/taskSelectors';
