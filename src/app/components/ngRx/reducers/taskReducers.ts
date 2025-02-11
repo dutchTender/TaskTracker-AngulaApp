@@ -1,10 +1,10 @@
 import {TaskAppState} from '../state/AppGlobalState';
 import {createReducer, on} from '@ngrx/store';
 import * as TaskActions from '../actions/taskActions';
-import {taskAdapter} from '../../interfaces/Task';
+import {taskStoreAdapter} from '../../interfaces/Task';
 
 
-export const initialState: TaskAppState = taskAdapter.getInitialState({
+export const initialState: TaskAppState = taskStoreAdapter.getInitialState({
   error: null,
   focusedTask: {text: '', reminder: false, day: '' },
   deletedTask: {text: '', reminder: false, day: '' },
@@ -22,7 +22,7 @@ export const taskReducer = createReducer(initialState,
   )),
   on( TaskActions.getTasksSuccess, (currentState, taskAction) =>
     {
-      return taskAdapter.addMany(taskAction.userTasks, {...currentState, isLoading: false});
+      return taskStoreAdapter.addMany(taskAction.userTasks, {...currentState, isLoading: false});
     }
   ),
   on( TaskActions.getTasksFailure, (currentState, taskAction) => (
@@ -64,7 +64,7 @@ export const taskReducer = createReducer(initialState,
       taskList: [...currentState.taskList, taskAction.newTask],
       focusedTask: taskAction.newTask,
       uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true}*/
-      return taskAdapter.addOne(
+      return taskStoreAdapter.addOne(
         taskAction.newTask, {
           ...currentState,
           focusedTask: taskAction.newTask,
@@ -93,7 +93,7 @@ export const taskReducer = createReducer(initialState,
         (taskElement) => taskElement.id === taskAction.updatedTask.id ? taskAction.updatedTask : taskElement
       )*/
       // tslint:disable-next-line:max-line-length
-      return taskAdapter.updateOne({
+      return taskStoreAdapter.updateOne({
                 id: taskAction.updatedTask.id,
                 changes: taskAction.updatedTask
               },
@@ -117,12 +117,17 @@ export const taskReducer = createReducer(initialState,
       deletedTask: taskAction.focusedTask
     }
   )),
-  on( TaskActions.deleteTaskSuccess, (currentState) => (
+  on( TaskActions.deleteTaskSuccess, (currentState) =>
     {
-      ...currentState,
-      taskList: currentState.taskList.filter( task => task.id !== currentState.deletedTask.id )
+     /* ...currentState,
+      taskList: currentState.taskList.filter( task => task.id !== currentState.deletedTask.id )*/
+      return taskStoreAdapter.removeOne(
+          currentState.deletedTask.id
+        ,
+        currentState
+        );
     }
-  )),
+  ),
   on( TaskActions.deleteTaskFailure, (currentState, taskAction) => (
     {
       ...currentState,

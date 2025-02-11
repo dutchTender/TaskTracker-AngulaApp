@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Task} from '../interfaces/Task';
 import * as taskActions from '../ngRx/actions/taskActions';
-import {TaskService} from '../../services/task.service';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {TaskAppStateWrapper} from '../ngRx/state/AppGlobalStateWrapper';
@@ -21,7 +20,7 @@ export class TaskListComponent implements OnInit {
   private reloadData(): void{
     this.ngRxStore.dispatch(taskActions.getTasks());
   }
-  constructor(private tService: TaskService, private ngRxStore: Store<TaskAppStateWrapper>) {
+  constructor(private ngRxStore: Store<TaskAppStateWrapper>) {
   }
   ngOnInit(): void {
     this.isLoading$ = this.ngRxStore.pipe(select(taskLoadingSelector));

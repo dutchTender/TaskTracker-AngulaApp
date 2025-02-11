@@ -8,5 +8,5 @@ export interface Task{
   reminder: boolean;
 }
 
-export const taskAdapter = createEntityAdapter<Task>();
+export const taskStoreAdapter = createEntityAdapter<Task>();
 

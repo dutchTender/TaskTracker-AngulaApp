@@ -13,12 +13,6 @@
       "id": 4
     },
     {
-      "day": "fsfs",
-      "id": 7,
-      "reminder": false,
-      "text": "aaaa"
-    },
-    {
       "day": "next monday",
       "id": 9,
       "reminder": true,
@@ -29,6 +23,12 @@
       "reminder": true,
       "text": "test123",
       "id": 10
+    },
+    {
+      "day": "sdgsgsdg",
+      "reminder": true,
+      "text": "aaa",
+      "id": 11
     }
   ]
 }
