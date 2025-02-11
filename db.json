@@ -19,16 +19,16 @@
       "text": "qweqwe "
     },
     {
-      "day": "sfsdf",
-      "reminder": true,
-      "text": "test123",
-      "id": 8
-    },
-    {
       "day": "next monday",
       "id": 9,
       "reminder": true,
       "text": "angular job interview "
+    },
+    {
+      "day": "setsfe ",
+      "reminder": true,
+      "text": "test123",
+      "id": 10
     }
   ]
 }
