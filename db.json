@@ -23,12 +23,6 @@
       "reminder": true,
       "text": "test123",
       "id": 10
-    },
-    {
-      "day": "sdgsgsdg",
-      "reminder": true,
-      "text": "aaa",
-      "id": 11
     }
   ]
 }

@@ -5,7 +5,6 @@ import {EntityState} from '@ngrx/entity';
 export interface TaskAppState extends EntityState<Task> {
   uiManager: UIFlag;
   focusedTask: Task;
-  taskList: Task[];
   isLoading: boolean;
   deletedTask: Task;
   error: string | null;
