@@ -6,8 +6,8 @@ import {taskStoreAdapter} from '../state/Task';
 
 export const initialState: TaskAppState = taskStoreAdapter.getInitialState({
   error: null,
-  focusedTask: {text: '', reminder: false, day: '' },
-  deletedTask: {text: '', reminder: false, day: '' },
+  focusedTask: {text: '', reminder: false, day: null },
+  deletedTask: {text: '', reminder: false, day: null },
   taskList: [],
   uiManager: {showAddButton: true, showAddTaskForm: false, showEdit: false},
   isLoading: false

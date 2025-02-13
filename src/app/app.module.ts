@@ -23,6 +23,7 @@ import {taskReducer} from './components/ngRx/reducers/taskReducers';
 import {TaskAppStateEffects} from './components/ngRx/effects/taskEffects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 
@@ -64,7 +65,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

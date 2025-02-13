@@ -25,7 +25,7 @@ export class AddTaskFormComponent implements OnInit {
 
   newTaskForm = this.formBuilder.group({
     taskText: ['', Validators.required],
-    taskDay: '',
+    taskDay: null,
     taskReminderOption: false,
   });
 
@@ -34,9 +34,10 @@ export class AddTaskFormComponent implements OnInit {
 
   createNewTask(): void {
     const newTask: Task = {
-      day: '', reminder: false, text: ''
+      day: null, reminder: false, text: ''
     };
     newTask.text = this.newTaskForm.value.taskText;
+    console.log(this.newTaskForm.value.taskDay);
     newTask.day = this.newTaskForm.value.taskDay;
     newTask.reminder = this.newTaskForm.value.taskReminderOption;
     this.addTaskEmitter.emit(newTask);

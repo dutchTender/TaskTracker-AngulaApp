@@ -30,7 +30,7 @@ export class TaskListComponent implements OnInit {
   }
 
   taskUpdateFormOpenEventCatcher(task: Task): void{
-    const focusedTask: Task = {day: '', reminder: false, text: ''};
+    const focusedTask: Task = {day: null, reminder: false, text: ''};
     focusedTask.id = task.id;
     focusedTask.reminder = task.reminder;
     focusedTask.text = task.text;
