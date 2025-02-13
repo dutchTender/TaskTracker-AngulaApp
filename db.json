@@ -23,6 +23,12 @@
       "reminder": true,
       "text": "test123",
       "id": 10
+    },
+    {
+      "day": "sdf ssd ",
+      "reminder": true,
+      "text": "sdfs",
+      "id": 11
     }
   ]
 }

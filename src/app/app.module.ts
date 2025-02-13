@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 
 
@@ -54,6 +54,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
+    ReactiveFormsModule,
     StoreModule.forRoot({appData: taskReducer}),
     EffectsModule.forRoot([TaskAppStateEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
