@@ -2,11 +2,12 @@
   <form *ngIf="showAddTask.showAddTaskForm=== true" [formGroup]="newTaskForm"  class="add-form" (ngSubmit)="createNewTask()">
     <div class="form-control">
         <label for="text">Task Description</label>
-        <input  type="text" name="text" formControlName="taskText"  id="text" placeholder="Add Task"/>
+        <input  type="text" name="text" formControlName="taskText"  id="text" placeholder="Do some fun stuff ..."/>
     </div>
     <div class="form-control">
-          <input matInput [matDatepicker]="datePicker" name="day" formControlName="taskDay"  id="day" />
-          <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+          <label for="day">Task Date</label>
+          <input [matDatepicker]="datePicker" name="day" formControlName="taskDay"  id="day" />
+          <mat-datepicker-toggle [for]="datePicker"></mat-datepicker-toggle>
           <mat-datepicker #datePicker></mat-datepicker>
     </div>
     <div class="form-control form-control-check">

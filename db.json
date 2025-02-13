@@ -13,7 +13,7 @@
       "id": 4
     },
     {
-      "day": "next monday",
+      "day": "2025-02-22T05:00:00.000Z",
       "id": 9,
       "reminder": true,
       "text": "angular job interview "
@@ -23,6 +23,12 @@
       "reminder": true,
       "text": "test123",
       "id": 10
+    },
+    {
+      "day": "2025-02-22T05:00:00.000Z",
+      "reminder": true,
+      "text": "sefgerg",
+      "id": 11
     }
   ]
 }

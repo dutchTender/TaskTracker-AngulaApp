@@ -9,9 +9,11 @@
       </div>
       <div class="form-control">
         <label for="day">Day & Time</label>
-        <input type="text" name="day"   id="day" placeholder="Update Day & Time"
+        <input [matDatepicker]="datePicker" type="text" name="day"   id="day" placeholder="Update Day & Time"
                value="{{updatedTask.day}}"
                [(ngModel)]="updatedTask.day"/>
+        <mat-datepicker-toggle [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
       </div>
       <div class="form-control form-control-check">
         <label for="reminder">Task Reminder</label>
