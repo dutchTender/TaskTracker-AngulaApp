@@ -21,6 +21,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {taskReducer} from './components/ngRx/reducers/taskReducers';
 import {TaskAppStateEffects} from './components/ngRx/effects/taskEffects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const appRoutes: Routes = [
@@ -55,7 +56,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
     StoreModule.forRoot({appData: taskReducer}),
     EffectsModule.forRoot([TaskAppStateEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

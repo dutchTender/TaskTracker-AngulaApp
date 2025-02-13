@@ -92,7 +92,6 @@ export const taskReducer = createReducer(initialState,
       taskList: currentState.taskList.map(
         (taskElement) => taskElement.id === taskAction.updatedTask.id ? taskAction.updatedTask : taskElement
       )*/
-      // tslint:disable-next-line:max-line-length
       return taskStoreAdapter.updateOne({
                 id: taskAction.updatedTask.id,
                 changes: taskAction.updatedTask
