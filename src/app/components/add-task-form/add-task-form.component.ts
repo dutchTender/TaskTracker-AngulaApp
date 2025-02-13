@@ -25,7 +25,7 @@ export class AddTaskFormComponent implements OnInit {
 
   newTaskForm = this.formBuilder.group({
     taskText: ['', Validators.required],
-    taskDay: null,
+    taskDay: '',
     taskReminderOption: false,
   });
 
