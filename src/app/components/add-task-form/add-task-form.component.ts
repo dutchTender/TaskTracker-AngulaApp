@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {uiManagerSelector} from '../ngRx/selectors/taskSelectors';
 import {UIFlag} from '../interfaces/UIFlag';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 @Component({
   selector: 'app-add-task-form',
   templateUrl: './add-task-form.component.html',
@@ -22,13 +22,16 @@ export class AddTaskFormComponent implements OnInit {
   taskReminderOption: boolean;
   /* ---------------------------------------*/
   @Output() addTaskEmitter: EventEmitter<Task> = new EventEmitter<Task>();
+
   newTaskForm = this.formBuilder.group({
-    taskText: '',
+    taskText: ['', Validators.required],
     taskDay: '',
     taskReminderOption: false,
   });
+
   constructor(private ngRxStore: Store, private formBuilder: FormBuilder) {
   }
+
   createNewTask(): void {
     const newTask: Task = {
       day: '', reminder: false, text: ''

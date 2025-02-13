@@ -5,8 +5,11 @@
       <input type="text" name="text" formControlName="taskText"  id="text" placeholder="Add Task"/>
     </div>
     <div class="form-control">
-      <label for="day">Day & Time</label>
-      <input type="text" name="day" formControlName="taskDay"  id="day" placeholder="Add Day & Time"/>
+      <mat-calendar>
+        <label for="day">Day & Time</label>
+        <input type="text" name="day" formControlName="taskDay"  id="day" placeholder="Add Day & Time"/>
+      </mat-calendar>
+
     </div>
     <div class="form-control form-control-check">
       <label for="reminder">Task Reminder</label>

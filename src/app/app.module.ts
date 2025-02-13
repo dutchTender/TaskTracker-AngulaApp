@@ -22,6 +22,9 @@ import { environment } from '../environments/environment';
 import {taskReducer} from './components/ngRx/reducers/taskReducers';
 import {TaskAppStateEffects} from './components/ngRx/effects/taskEffects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 const appRoutes: Routes = [
@@ -57,8 +60,11 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     StoreModule.forRoot({appData: taskReducer}),
     EffectsModule.forRoot([TaskAppStateEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    BrowserAnimationsModule
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
