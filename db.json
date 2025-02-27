@@ -1,16 +1,16 @@
 {
   "tasks": [
     {
-      "day": "May 11th  at 3:30 PM",
+      "day": "2025-02-27T05:00:00.000Z",
       "id": 3,
       "reminder": true,
       "text": "Grocery Shopping at Asian Market"
     },
     {
-      "day": "every morning at 7am to 11am",
+      "day": "2025-02-28T05:00:00.000Z",
+      "id": 4,
       "reminder": true,
-      "text": "basektball skills practice part2",
-      "id": 4
+      "text": "basektball skills practice part2"
     },
     {
       "day": "2025-02-22T05:00:00.000Z",
@@ -25,10 +25,50 @@
       "id": 10
     },
     {
-      "day": "2025-02-22T05:00:00.000Z",
+      "day": "2025-02-28T05:00:00.000Z",
+      "id": 11,
       "reminder": true,
-      "text": "sefgerg",
-      "id": 11
+      "text": "sefgerg"
+    }
+  ],
+  "users": [
+    {
+      "name": "li zhang",
+      "user_name": "dutchTender",
+      "id": 3,
+      "email": "lzhang421@gmail.com",
+      "phone": "333-555-7777",
+      "tasks": [
+        {
+          "day": "2025-02-27T05:00:00.000Z",
+          "id": 3,
+          "reminder": true,
+          "text": "Grocery Shopping at Asian Market"
+        }
+      ]
+    },
+    {
+      "name": "bj",
+      "user_name": "crazyKitty23",
+      "id": 4,
+      "email": "lzhang420@gmail.com",
+      "phone": "333-555-8888",
+      "tasks": [
+        {
+          "day": "2025-02-28T05:00:00.000Z",
+          "id": 4,
+          "reminder": true,
+          "text": "basketball skills practice part2"
+        }
+      ]
+    },
+    {
+      "name": "achiles",
+      "user_name": "mrBoo1111",
+      "id": 5,
+      "email": "lzhang422@gmail.com",
+      "phone": "333-555-8888",
+      "tasks": []
     }
   ]
 }
