@@ -11,7 +11,6 @@ import { AddTaskFormComponent } from '../../components/forms/add-task-form/add-t
 import { EditTaskFormComponent } from '../../components/forms/edit-task-form/task-edit-form.component';
 import {TaskService} from '../../core/services/task.service';
 
-
 @NgModule({
   declarations: [
     TaskItemComponent,

@@ -14,12 +14,12 @@ import {TaskModule} from '../feature/task/task.module';
 
 
 import { AppComponent } from './app.component';
+import {TaskListComponent} from '../feature/task/task-list/task-list.component';
 import { HeaderComponent } from '../components/header/header.component';
 import { ButtonComponent } from '../components/button/button.component';
-
 import { AboutPageComponent } from '../components/about-page/about-page.component';
 import { FooterPageComponent } from '../components/footer-page/footer-page.component';
-import {TaskListComponent} from '../feature/task/task-list/task-list.component';
+
 
 const appRoutes: Routes = [
   {
