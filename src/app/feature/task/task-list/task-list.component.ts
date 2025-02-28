@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Task} from '../interfaces/Task';
-import * as taskActions from '../../components/ngRx/actions/taskActions';
+import {Task} from '../../../core/interfaces/Task';
+import * as taskActions from '../../../core/ngRx/actions/taskActions';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
-import {TaskAppStateWrapper} from '../../components/ngRx/state/AppGlobalStateWrapper';
-import {taskErrorSelector, taskListSelector, taskLoadingSelector} from '../../components/ngRx/selectors/taskSelectors';
+import {TaskAppStateWrapper} from '../../../core/ngRx/state/AppGlobalStateWrapper';
+import {taskErrorSelector, taskListSelector, taskLoadingSelector} from '../../../core/ngRx/selectors/taskSelectors';
 
 
 @Component({

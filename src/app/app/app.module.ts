@@ -8,9 +8,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../../environments/environment';
-import {taskReducer} from '../components/ngRx/reducers/taskReducers';
+import {taskReducer} from '../core/ngRx/reducers/taskReducers';
 
-import {TaskAppStateEffects} from '../components/ngRx/effects/taskEffects';
+import {TaskAppStateEffects} from '../core/ngRx/effects/taskEffects';
 import {TaskModule} from '../feature/task/task.module';
 
 
@@ -20,7 +20,7 @@ import { ButtonComponent } from '../components/button/button.component';
 
 import { AboutPageComponent } from '../components/about-page/about-page.component';
 import { FooterPageComponent } from '../components/footer-page/footer-page.component';
-import {TaskListComponent} from '../core/task-list/task-list.component';
+import {TaskListComponent} from '../feature/task/task-list/task-list.component';
 
 const appRoutes: Routes = [
   {

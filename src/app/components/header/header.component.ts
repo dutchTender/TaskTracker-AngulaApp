@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {uiManagerSelector} from '../ngRx/selectors/taskSelectors';
+import {uiManagerSelector} from '../../core/ngRx/selectors/taskSelectors';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {UIFlag} from '../../core/interfaces/UIFlag';
 import {select, Store} from '@ngrx/store';
-import * as taskActions from '../ngRx/actions/taskActions';
+import * as taskActions from '../../core/ngRx/actions/taskActions';
 
 @Component({
   selector: 'app-header',

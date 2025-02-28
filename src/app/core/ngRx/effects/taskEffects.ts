@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {TaskService} from '../../../services/task.service';
+import {TaskService} from '../../../feature/task/services/task.service';
 import * as taskActions from '../actions/taskActions';
 import {mergeMap, map, catchError, tap} from 'rxjs/operators';
 import {of} from 'rxjs';

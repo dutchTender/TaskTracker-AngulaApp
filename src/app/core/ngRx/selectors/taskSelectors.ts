@@ -1,6 +1,6 @@
 import {createSelector} from '@ngrx/store';
 import {TaskAppStateWrapper} from '../state/AppGlobalStateWrapper';
-import {Task, taskStoreAdapter} from '../../../core/interfaces/Task';
+import {Task, taskStoreAdapter} from '../../interfaces/Task';
 
 export const taskFeatureSlice = (dataState: TaskAppStateWrapper) =>  dataState.appData;
 

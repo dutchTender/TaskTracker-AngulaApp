@@ -2,7 +2,7 @@ import {Component, Output, EventEmitter, OnInit} from '@angular/core';
 import {Task} from '../../../core/interfaces/Task';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
-import {uiManagerSelector} from '../../ngRx/selectors/taskSelectors';
+import {uiManagerSelector} from '../../../core/ngRx/selectors/taskSelectors';
 import {UIFlag} from '../../../core/interfaces/UIFlag';
 import {FormBuilder, Validators} from '@angular/forms';
 @Component({

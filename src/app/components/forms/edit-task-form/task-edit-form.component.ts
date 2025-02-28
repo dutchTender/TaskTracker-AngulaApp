@@ -2,7 +2,7 @@ import {Component, Output, EventEmitter, OnInit, ChangeDetectionStrategy} from '
 import {Task} from '../../../core/interfaces/Task';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
-import {focusedTaskSelector, uiManagerSelector} from '../../ngRx/selectors/taskSelectors';
+import {focusedTaskSelector, uiManagerSelector} from '../../../core/ngRx/selectors/taskSelectors';
 import {UIFlag} from '../../../core/interfaces/UIFlag';
 
 @Component({
@@ -11,7 +11,7 @@ import {UIFlag} from '../../../core/interfaces/UIFlag';
   styleUrls: ['./task-edit-form.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TaskEditFormComponent implements OnInit {
+export class EditTaskFormComponent implements OnInit {
   showTaskEditForm$: Observable<UIFlag>;
   updatedTask$: Observable<Task>;
 
