@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {RouterModule, Routes} from '@angular/router';
-
+import {RouterModule} from '@angular/router';
+import {appRoutes} from './app.routes';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -14,26 +14,10 @@ import {userReducer} from './core/ngRx/reducers/userReducers';
 import {taskReducer} from './core/ngRx/reducers/taskReducers';
 
 import { AppComponent } from './app.component';
-import {TaskListComponent} from './feature/task/task-list/task-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ButtonComponent } from './components/button/button.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { FooterPageComponent } from './components/footer-page/footer-page.component';
-import { RoutesComponent } from './components/routes/routes.component';
-
-
-
-const appRoutes: Routes = [
-  {
-    path: 'tasks', component: TaskListComponent
-  },
-  {
-    path: '', redirectTo: 'tasks', pathMatch: 'full'
-  },
-  {
-    path: 'about', component: AboutPageComponent
-  }
-];
 
 @NgModule({
   declarations: [
@@ -42,7 +26,6 @@ const appRoutes: Routes = [
     ButtonComponent,
     AboutPageComponent,
     FooterPageComponent,
-    RoutesComponent,
   ],
   imports: [
     BrowserModule,
