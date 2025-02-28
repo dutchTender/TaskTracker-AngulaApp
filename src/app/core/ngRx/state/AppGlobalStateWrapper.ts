@@ -1,5 +1,6 @@
-import {TaskAppState} from './AppGlobalState';
+import {TaskAppState, UserAppState} from './AppGlobalState';
 
 export interface TaskAppStateWrapper{
-   appData: TaskAppState;
+   taskAppData: TaskAppState;
+   userAppData: UserAppState;
 }
