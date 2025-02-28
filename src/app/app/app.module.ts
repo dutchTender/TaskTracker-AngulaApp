@@ -9,7 +9,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../../environments/environment';
 import {taskReducer} from '../core/ngRx/reducers/taskReducers';
-
 import {TaskAppStateEffects} from '../core/ngRx/effects/taskEffects';
 import {TaskModule} from '../feature/task/task.module';
 

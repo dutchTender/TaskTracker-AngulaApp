@@ -9,6 +9,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskItemComponent } from './task-item/task-item.component';
 import { AddTaskFormComponent } from '../../components/forms/add-task-form/add-task-form.component';
 import { EditTaskFormComponent } from '../../components/forms/edit-task-form/task-edit-form.component';
+import {TaskService} from '../../core/services/task.service';
 
 
 @NgModule({
@@ -26,6 +27,9 @@ import { EditTaskFormComponent } from '../../components/forms/edit-task-form/tas
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+  ],
+  providers: [
+    TaskService
   ]
 })
 export class TaskModule { }
