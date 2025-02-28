@@ -20,9 +20,9 @@
     },
     {
       "day": "2025-02-22T05:00:00.000Z",
+      "id": 10,
       "reminder": true,
-      "text": "test123",
-      "id": 10
+      "text": "test123"
     }
   ],
   "users": [

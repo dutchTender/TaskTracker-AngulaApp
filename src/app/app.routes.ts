@@ -11,7 +11,7 @@ export  const appRoutes: Routes = [
     path: 'users', component: UserListComponent
   },
   {
-    path: '', redirectTo: 'tasks', pathMatch: 'full'
+    path: '', redirectTo: 'users', pathMatch: 'full'
   },
   {
     path: 'about', component: AboutPageComponent

@@ -10,6 +10,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {TaskAppStateEffects} from './core/ngRx/effects/taskEffects';
 import {TaskModule} from './feature/task/task.module';
+import {UserModule} from './feature/user/user.module';
 import {userReducer} from './core/ngRx/reducers/userReducers';
 import {taskReducer} from './core/ngRx/reducers/taskReducers';
 
@@ -18,6 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ButtonComponent } from './components/button/button.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { FooterPageComponent } from './components/footer-page/footer-page.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { FooterPageComponent } from './components/footer-page/footer-page.compon
     EffectsModule.forRoot([TaskAppStateEffects]),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     BrowserAnimationsModule,
-    TaskModule
+    TaskModule,
+    UserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
