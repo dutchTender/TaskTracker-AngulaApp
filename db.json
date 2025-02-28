@@ -29,6 +29,7 @@
     {
       "name": "li zhang",
       "user_name": "dutchTender",
+      "password": "",
       "id": 3,
       "email": "lzhang421@gmail.com",
       "phone": "333-555-7777",
@@ -44,6 +45,7 @@
     {
       "name": "bj",
       "user_name": "crazyKitty23",
+      "password": "",
       "id": 4,
       "email": "lzhang420@gmail.com",
       "phone": "333-555-8888",
@@ -59,6 +61,7 @@
     {
       "name": "achiles",
       "user_name": "mrBoo1111",
+      "password": "",
       "id": 5,
       "email": "lzhang422@gmail.com",
       "phone": "333-555-8888",
