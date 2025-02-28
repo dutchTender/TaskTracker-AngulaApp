@@ -1,9 +1,9 @@
 import {Component, Output, EventEmitter, OnInit} from '@angular/core';
-import {Task} from '../ngRx/state/Task';
+import {Task} from '../../../core/interfaces/Task';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
-import {uiManagerSelector} from '../ngRx/selectors/taskSelectors';
-import {UIFlag} from '../interfaces/UIFlag';
+import {uiManagerSelector} from '../../ngRx/selectors/taskSelectors';
+import {UIFlag} from '../../../core/interfaces/UIFlag';
 import {FormBuilder, Validators} from '@angular/forms';
 @Component({
   selector: 'app-add-task-form',

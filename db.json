@@ -3,7 +3,7 @@
     {
       "day": "2025-02-27T05:00:00.000Z",
       "id": 3,
-      "reminder": true,
+      "reminder": false,
       "text": "Grocery Shopping at Asian Market"
     },
     {
@@ -23,12 +23,6 @@
       "reminder": true,
       "text": "test123",
       "id": 10
-    },
-    {
-      "day": "2025-02-28T05:00:00.000Z",
-      "id": 11,
-      "reminder": true,
-      "text": "sefgerg"
     }
   ],
   "users": [

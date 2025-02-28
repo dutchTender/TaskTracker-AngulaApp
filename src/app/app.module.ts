@@ -15,13 +15,13 @@ import { environment } from '../environments/environment';
 import {taskReducer} from './components/ngRx/reducers/taskReducers';
 import {TaskAppStateEffects} from './components/ngRx/effects/taskEffects';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './app/app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ButtonComponent } from './components/button/button.component';
-import { TaskListComponent } from './components/task-list/task-list.component';
-import { TaskItemComponent } from './components/task-item/task-item.component';
-import { AddTaskFormComponent } from './components/add-task-form/add-task-form.component';
-import { TaskEditFormComponent } from './components/task-edit-form/task-edit-form.component';
+import { TaskListComponent } from './core/task-list/task-list.component';
+import { TaskItemComponent } from './core/task-item/task-item.component';
+import { AddTaskFormComponent } from './components/forms/add-task-form/add-task-form.component';
+import { TaskEditFormComponent } from './components/forms/task-edit-form/task-edit-form.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { FooterPageComponent } from './components/footer-page/footer-page.component';
 
