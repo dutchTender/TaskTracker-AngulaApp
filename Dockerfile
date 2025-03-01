@@ -4,14 +4,16 @@ WORKDIR /app
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN npm install @angular/cli@11.2.3
-RUN useradd --create-home appUser
-USER appUser
+RUN npm install -g @angular/cli@11.2.3
 
 #COPY APP TO WORKING DIRECTORY
+COPY *.json ./
+COPY *.js   ./
+COPY src ./
+
+RUN npm install
+COPY . .
 
 EXPOSE 4200
 
-ENTRYPOINT ["npm", "run", "json-server"]
-
-CMD ["ng", "serve", "--host", "0.0.0.0"]
+ENTRYPOINT ["ng", "serve"]
