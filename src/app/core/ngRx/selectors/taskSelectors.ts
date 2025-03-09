@@ -1,6 +1,6 @@
 import {createSelector} from '@ngrx/store';
 import {TaskAppStateWrapper} from '../state/AppGlobalStateWrapper';
-import {Task, taskStoreAdapter} from '../../interfaces/Task';
+import {Task, taskEntityStore} from '../../interfaces/Task';
 
 export const taskFeatureSlice = (dataState: TaskAppStateWrapper) =>  dataState.taskAppData;
 
@@ -11,7 +11,7 @@ export const taskLoadingSelector = createSelector(
 
 export const taskListSelector = createSelector(
   taskFeatureSlice,
-  taskStoreAdapter.getSelectors().selectAll
+  taskEntityStore.getSelectors().selectAll
 );
 
 export const taskErrorSelector = createSelector(

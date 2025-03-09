@@ -1,10 +1,10 @@
 import {TaskAppState} from '../state/AppGlobalState';
 import {createReducer, on} from '@ngrx/store';
 import * as TaskActions from '../actions/taskActions';
-import {taskStoreAdapter} from '../../interfaces/Task';
+import {taskEntityStore} from '../../interfaces/Task';
 
 
-export const initialState: TaskAppState = taskStoreAdapter.getInitialState({
+export const initialState: TaskAppState = taskEntityStore.getInitialState({
   error: null,
   focusedTask: {text: '', reminder: false, day: null },
   deletedTask: {text: '', reminder: false, day: null },
@@ -22,7 +22,7 @@ export const taskReducer = createReducer(initialState,
   )),
   on( TaskActions.getTasksSuccess, (currentState, taskAction) =>
     {
-      return taskStoreAdapter.addMany(taskAction.userTasks, {...currentState, isLoading: false});
+      return taskEntityStore.addMany(taskAction.userTasks, {...currentState, isLoading: false});
     }
   ),
   on( TaskActions.getTasksFailure, (currentState, taskAction) => (
@@ -64,7 +64,7 @@ export const taskReducer = createReducer(initialState,
       taskList: [...currentState.taskList, taskAction.newTask],
       focusedTask: taskAction.newTask,
       uiManager: {showAddButton: false, showAddTaskForm: false, showEdit: true}*/
-      return taskStoreAdapter.addOne(
+      return taskEntityStore.addOne(
         taskAction.newTask, {
           ...currentState,
           focusedTask: taskAction.newTask,
@@ -92,7 +92,7 @@ export const taskReducer = createReducer(initialState,
       taskList: currentState.taskList.map(
         (taskElement) => taskElement.id === taskAction.updatedTask.id ? taskAction.updatedTask : taskElement
       )*/
-      return taskStoreAdapter.updateOne({
+      return taskEntityStore.updateOne({
                 id: taskAction.updatedTask.id,
                 changes: taskAction.updatedTask
               },
@@ -120,7 +120,7 @@ export const taskReducer = createReducer(initialState,
     {
      /* ...currentState,
       taskList: currentState.taskList.filter( task => task.id !== currentState.deletedTask.id )*/
-      return taskStoreAdapter.removeOne(
+      return taskEntityStore.removeOne(
           currentState.deletedTask.id
         ,
         currentState
