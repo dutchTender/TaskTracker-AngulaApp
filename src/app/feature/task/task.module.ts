@@ -12,12 +12,6 @@ import { EditTaskFormComponent } from '../../components/forms/edit-task-form/tas
 import {TaskService} from '../../core/services/task.service';
 
 @NgModule({
-  declarations: [
-    TaskItemComponent,
-    TaskListComponent,
-    AddTaskFormComponent,
-    EditTaskFormComponent,
-  ],
   imports: [
     CommonModule,
     FontAwesomeModule,
@@ -26,6 +20,12 @@ import {TaskService} from '../../core/services/task.service';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+  ],
+  declarations: [
+    TaskItemComponent,
+    TaskListComponent,
+    AddTaskFormComponent,
+    EditTaskFormComponent,
   ],
   providers: [
     TaskService

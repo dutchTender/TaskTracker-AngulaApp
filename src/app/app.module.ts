@@ -22,13 +22,6 @@ import { FooterPageComponent } from './components/footer-page/footer-page.compon
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    ButtonComponent,
-    AboutPageComponent,
-    FooterPageComponent,
-  ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
@@ -38,6 +31,13 @@ import { FooterPageComponent } from './components/footer-page/footer-page.compon
     BrowserAnimationsModule,
     TaskModule,
     UserModule,
+  ],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    ButtonComponent,
+    AboutPageComponent,
+    FooterPageComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
