@@ -1,9 +1,9 @@
 import {Component, Output, EventEmitter, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {Task} from '../../../core/interfaces/Task';
+import {Task} from '../../../../core/interfaces/Task';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
-import {focusedTaskSelector, uiManagerSelector} from '../../../core/ngRx/selectors/taskSelectors';
-import {UIFlag} from '../../../core/interfaces/UIFlag';
+import {focusedTaskSelector, uiManagerSelector} from '../../../../core/ngRx/selectors/taskSelectors';
+import {UIFlag} from '../../../../core/interfaces/UIFlag';
 
 @Component({
   selector: 'app-edit-task-form',

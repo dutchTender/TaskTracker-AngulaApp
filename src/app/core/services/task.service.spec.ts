@@ -19,6 +19,22 @@ describe('TaskService', () => {
   });
 
   it('should return a list of tasks', () => {
+    service.getTasksFromService().subscribe( result => {
+      expect(result).toBeTruthy();
+      console.log(result);
+      expect(result.length).toBeGreaterThan(0);
+    });
+    const req = httpMock.expectOne('http://localhost:5500/tasks');
+    req.flush(
+          [
+            {
+              day: '2025-02-27T05:00:00.000Z',
+              id: 3,
+              reminder: true,
+              text: 'Grocery Shopping at Asian Market'
+            }
+            ]
+    );
   });
 
 });

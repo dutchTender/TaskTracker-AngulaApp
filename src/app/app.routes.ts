@@ -5,7 +5,8 @@ import {UserListComponent} from './feature/user/user-list/user-list.component';
 
 export  const appRoutes: Routes = [
   {
-    path: 'tasks', component: TaskListComponent
+    path: 'tasks',
+    component: TaskListComponent,
   },
   {
     path: 'users', component: UserListComponent

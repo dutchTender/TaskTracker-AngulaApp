@@ -8,11 +8,11 @@ import {Task} from '../../../core/interfaces/Task';
 /*below component is used to mock the incoming task value that is injected into this component*/
 @Component({
   selector: 'app-host-component',
-  template: '<app-task-item [task]="testTask"></app-task-item>t>',
+  template: '<app-task-item [task]="testTask"></app-task-item>',
 })
 class TaskHostComponent {
   testTask: Task =  {
-    day: 'test', reminder: false, text: 'test'
+    day: null, reminder: false, text: 'test text from mocked Parent Component',
 
   };
 }
