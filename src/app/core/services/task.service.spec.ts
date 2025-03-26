@@ -22,7 +22,7 @@ describe('TaskService', () => {
     service.getTasksFromService().subscribe( result => {
       expect(result).toBeTruthy();
       console.log(result);
-      expect(result.length).toBeGreaterThan(0);
+      expect(result.length).toBeGreaterThan(1);
     });
     const req = httpMock.expectOne('http://localhost:5500/tasks');
     req.flush(
@@ -32,6 +32,12 @@ describe('TaskService', () => {
               id: 3,
               reminder: true,
               text: 'Grocery Shopping at Asian Market'
+            },
+            {
+              day: '2025-02-28T05:00:00.000Z',
+              id: 2,
+              reminder: true,
+              text: 'Grocery Shopping at Asian Market2'
             }
             ]
     );
